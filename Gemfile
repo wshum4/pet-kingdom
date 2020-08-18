@@ -34,6 +34,7 @@ gem 'simple_form'
 
 # custom gems
 gem 'devise'
+gem 'pundit'
 
 group :development, :test do
   gem 'pry-byebug'
