@@ -1,6 +1,10 @@
-<h2>Requests</h2>
+<h2>All Requests</h2>
 <ul>
   <% @requests.each do |req| %>
     <li><%= link_to "#{req.service.capitalize}: #{req.animal.capitalize}", request_path(req) %></li>
   <% end %>
 </ul>
+
+<% if current_user %>
+  <%= link_to "Home", root_path %>
+<% end %>
