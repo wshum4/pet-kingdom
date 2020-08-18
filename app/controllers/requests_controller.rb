@@ -4,7 +4,10 @@ class RequestsController < ApplicationController
   def index
     @all_requests = policy_scope(Request)
     authorize(Request)
-    if current_user.owner
+    if current_user.owner && current_user.sitter
+      # TODO: need to figure out how to display all sitter rq & owner rq
+      @requests = @all_requests.where(owner_id: current_user.id).or(@all_requests.where(sitter_id: current_user.id))
+    elsif current_user.owner
       @requests = @all_requests.where(owner_id: current_user.id)
     elsif current_user.sitter
       @requests = @all_requests.where(sitter_id: current_user.id)
