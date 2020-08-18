@@ -2,8 +2,13 @@ class RequestsController < ApplicationController
   before_action :set_request, only: [:show, :update, :destroy, :submit_confirm, :update_confirm]
 
   def index
-    @requests = policy_scope(Request)
+    @all_requests = policy_scope(Request)
     authorize(Request)
+    if current_user.owner
+      @requests = @all_requests.where(owner_id: current_user.id)
+    elsif current_user.sitter
+      @requests = @all_requests.where(sitter_id: current_user.id)
+    end
   end
 
   def show
