@@ -2,16 +2,14 @@ class RequestsController < ApplicationController
   before_action :set_request, only: [:show, :update, :destroy, :submit_confirm, :update_confirm]
 
   def index
-    if current_user.owner
-      @requests = current_user.requests_as_owner
-    elsif current_user.sitter
-      @requests = current_user.requests_as_sitter
-    end
+    @requests = policy_scope(Request)
+    authorize(Request)
   end
 
   def show
     # TODO: limit access if you are owner vs sitter
     # @request = Request.find(params[:id])
+    authorize(@request)
   end
 
   def create
@@ -31,7 +29,9 @@ class RequestsController < ApplicationController
     # As sitter, I can update rq for accept/decline
     # @request = Request.find(params[:id])
     authorize(@request)
-    # TODO: set accepted if/else
+    @request.update(request_params)
+    @request.save
+    render 'show'
   end
 
   def destroy
@@ -57,6 +57,6 @@ class RequestsController < ApplicationController
   end
 
   def request_params
-    params.require(:requests).permit(:service, :start_date, :end_date, :price, :animal, :animal_info, :housing,)
+    params.require(:requests).permit(:service, :start_date, :end_date, :price, :animal, :animal_info, :housing, :accepted)
   end
 end
