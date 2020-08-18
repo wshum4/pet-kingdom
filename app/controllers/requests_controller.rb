@@ -15,13 +15,13 @@ class RequestsController < ApplicationController
   def create
     @request = Request.new(request_params)
     @request.owner = current_user
-    # TODO: find sitter ID from params and set to @request.sitter
-    # @request.sitter = ?
+    @sitter = User.find(params[:id])
+    @request.sitter = @sitter
     authorize(@request)
-    if request.save
+    if @request.save
       redirect_to submit_confirm_path(@request)
     else
-      # render :sitter(@request.sitter)
+      render 'sitters/show'
     end
   end
 
@@ -30,8 +30,11 @@ class RequestsController < ApplicationController
     # @request = Request.find(params[:id])
     authorize(@request)
     @request.update(request_params)
-    @request.save
-    render 'show'
+    if @request.save
+      render :update_confirm
+    else
+      render 'show'
+    end
   end
 
   def destroy
@@ -44,10 +47,12 @@ class RequestsController < ApplicationController
 
   def submit_confirm
     # @request = Request.find(params[:id])
+    authorize(@request)
   end
 
   def update_confirm
     # @request = Request.find(params[:id])
+    authorize(@request)
   end
 
   private
@@ -57,6 +62,6 @@ class RequestsController < ApplicationController
   end
 
   def request_params
-    params.require(:requests).permit(:service, :start_date, :end_date, :price, :animal, :animal_info, :housing, :accepted)
+    params.require(:request).permit(:service, :start_date, :end_date, :price, :animal, :animal_info, :housing, :message, :accepted)
   end
 end

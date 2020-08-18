@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   get "/sitters", to: "sitters#index", as: "sitters"
   get "/sitters/:id", to: "sitters#show", as: "sitter"
-  post "/sitters/:id/requests", to: "requests#create"
+  post "/sitters/:id/requests", to: "requests#create", as: "user_requests"
   patch "/requests/:id", to: "requests#update", as: "edit_request"
   get "/requests", to: "requests#index", as: "requests"
   get "/requests/:id", to: "requests#show", as: "request"
