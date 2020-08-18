@@ -3,5 +3,4 @@ class Request < ApplicationRecord
   belongs_to :sitter, class_name: "User"
 
   validates :service, :start_date, :end_date, :price, :animal, presence: true
-  validates :animal_info, :housing, presence: true
 end
