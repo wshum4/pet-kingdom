@@ -1,0 +1,16 @@
+<h2><%= @request.service.capitalize %>: <%= @request.animal.capitalize %></h2>
+<p>Requested by: <%= @request.owner.first_name.capitalize %></p>
+<p>For: <%= @request.sitter.first_name.capitalize %></p>
+<p>Price: <%= @request.price %></p>
+<p>Start Date: <%= @request.start_date %></p>
+<p>End Date: <%= @request.end_date %></p>
+<p>Accepted: <%= @request.accepted %></p>
+<% if current_user.sitter %>
+  <%= button_to "Accept", edit_request_path(@request), { method: :patch, class: "btn btn-success", params: { "requests[accepted]" => true} } %>
+  <%= button_to "Decline", edit_request_path(@request), { method: :patch, class: "btn btn-danger", params: { "requests[accepted]" => false} } %>
+<% end %>
+<% if current_user.owner && !@request.accepted %>
+  <%= button_to "Delete Request", request_path(@request), { method: :delete, class: "btn btn-danger" } %>
+<% end %>
+<hr>
+<%= link_to "All Requests", requests_path %>
