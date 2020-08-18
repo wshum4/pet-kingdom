@@ -3,7 +3,9 @@
 <p>Details: <%= @sitter.details %></p>
 <p>Location: <%= @sitter.local_area %></p>
 <p>Verified: <%= @sitter.verified %></p>
-
+<hr>
+<%= render "requests/form", sitter: @sitter, request: @request %>
+<hr>
 <%= link_to 'Back to Sitters', sitters_path %>
 <br>
 <%= link_to 'Home', root_path %>

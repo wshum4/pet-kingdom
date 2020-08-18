@@ -19,6 +19,14 @@ class RequestPolicy < ApplicationPolicy
     user.owner && record.owner == user
   end
 
+  def submit_confirm?
+    user.owner && record.owner == user
+  end
+
+  def update_confirm?
+    record.owner == user || record.sitter = user
+  end
+
   class Scope < Scope
     def resolve
       if user.owner
