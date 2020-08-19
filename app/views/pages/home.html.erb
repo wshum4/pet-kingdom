@@ -1,5 +1,6 @@
 
 <div class="home_page">
+  <div class="container">
   <div class="name">
     <h1>Pet Kingdom</h1>
   </div>
@@ -10,23 +11,17 @@ PET KINGDOM sitters are your rainy-day-pet-walkers, busy-weekend-pet-sitter and 
 </p>
 </div>
 
-<% if current_user.nil? %>
-  <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary" %>
-  <%= link_to "Log In", new_user_session_path, class: "btn btn-primary"%>
-<% else %>
+<% unless current_user.nil? %>
   <% if current_user.owner && current_user.sitter %>
     <%= link_to "Your Requests", requests_path, class: "btn btn-primary"%>
     <%= link_to "All Sitters", sitters_path, class: "btn btn-primary" %>
-    <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "btn btn-primary" %>
   <% elsif current_user.owner %>
     <%= link_to "Your Requests", requests_path, class: "btn btn-primary" %>
     <%= link_to "All Sitters", sitters_path, class: "btn btn-primary" %>
-    <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "btn btn-primary" %>
   <% elsif current_user.sitter %>
     <%= link_to "Your Requests", requests_path, class: "btn btn-primary" %>
-    <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "btn btn-primary" %>
   <% end %>
 <% end %>
-
+</div>
 
 </div>
