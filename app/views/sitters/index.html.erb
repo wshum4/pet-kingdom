@@ -2,8 +2,10 @@
 
 <ul>
   <% @sitters.each do |sitter| %>
-  <li><%= link_to sitter.first_name, sitter_path(sitter) %></li>
-  <% end %>
+    <% unless sitter == current_user%>
+    <li><%= link_to sitter.first_name, sitter_path(sitter) %></li>
+    <% end %>
+  <%end%>
 </ul>
 
 <%= link_to 'Home', root_path %>

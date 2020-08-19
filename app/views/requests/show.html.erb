@@ -5,11 +5,15 @@
 <p>Start Date: <%= @request.start_date %></p>
 <p>End Date: <%= @request.end_date %></p>
 <p>Accepted: <%= @request.accepted %></p>
-<% if current_user.sitter %>
-  <%= button_to "Accept", edit_request_path(@request), { method: :patch, class: "btn btn-success", params: { "request[accepted]" => true} } %>
-  <%= button_to "Decline", edit_request_path(@request), { method: :patch, class: "btn btn-danger", params: { "request[accepted]" => false} } %>
+<p>Animal Info: <%= @request.animal_info %></p>
+<p>Messages: <%= @request.message %></p>
+<p></p>
+<% if current_user.sitter && @request.sitter == current_user %>
+  <%= button_to "Accept", update_request_path(@request), { method: :patch, class: "btn btn-success", params: { "request[accepted]" => true} } %>
+  <%= button_to "Decline", update_request_path(@request), { method: :patch, class: "btn btn-danger", params: { "request[accepted]" => false} } %>
 <% end %>
 <% if current_user.owner && !@request.accepted %>
+  <%= button_to "Edit Request", edit_request_path(@request), { method: :get, class: "btn btn-secondary"} %>
   <%= button_to "Delete Request", request_path(@request), { method: :delete, class: "btn btn-danger" } %>
 <% end %>
 <hr>

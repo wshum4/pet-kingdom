@@ -1,16 +1,13 @@
 class RequestsController < ApplicationController
-  before_action :set_request, only: [:show, :update, :destroy, :submit_confirm, :update_confirm]
+  before_action :set_request, only: [:show, :edit, :update, :destroy, :submit_confirm, :update_confirm]
 
   def index
-    @all_requests = policy_scope(Request)
+    @requests = policy_scope(Request)
     authorize(Request)
     if current_user.owner && current_user.sitter
       # TODO: need to figure out how to display all sitter rq & owner rq
-      @requests = @all_requests.where(owner_id: current_user.id).or(@all_requests.where(sitter_id: current_user.id))
-    elsif current_user.owner
-      @requests = @all_requests.where(owner_id: current_user.id)
-    elsif current_user.sitter
-      @requests = @all_requests.where(sitter_id: current_user.id)
+      @owner_requests = @requests.where(owner_id: current_user.id)
+      @sitter_requests = @requests.where(sitter_id: current_user.id)
     end
   end
 
@@ -33,6 +30,10 @@ class RequestsController < ApplicationController
     end
   end
 
+  def edit
+    authorize(@request)
+  end
+  
   def update
     # As sitter, I can update rq for accept/decline
     # @request = Request.find(params[:id])

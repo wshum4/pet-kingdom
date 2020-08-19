@@ -4,36 +4,52 @@ class RequestPolicy < ApplicationPolicy
   end
 
   def show?
-    record.owner == user || record.sitter == user
+    is_owner? || is_sitter?
   end
 
   def create?
     user.owner
   end
 
+  def edit?
+    is_owner?
+  end
+
   def update?
-    user.sitter && record.sitter == user
+    is_owner? || is_sitter?
   end
 
   def destroy?
-    user.owner && record.owner == user
+    is_owner?
   end
 
   def submit_confirm?
-    user.owner && record.owner == user
+    is_owner?
   end
 
   def update_confirm?
-    record.owner == user || record.sitter = user
+    is_owner? || is_sitter?
   end
 
   class Scope < Scope
     def resolve
-      if user.owner
+      if user.owner && user.sitter
+        scope.where('owner_id = :user_id or sitter_id = :user_id', { user_id: user.id })
+      elsif user.owner
         scope.where(owner: user)
       elsif user.sitter
         scope.where(sitter: user)
       end
     end
+  end
+
+  private
+
+  def is_owner?
+    user.owner && record.owner == user
+  end
+
+  def is_sitter?
+    user.sitter && record.sitter == user
   end
 end

@@ -1,9 +1,25 @@
 <h2>All Requests</h2>
-<ul>
-  <% @requests.each do |req| %>
-    <li><%= link_to "#{req.service.capitalize}: #{req.animal.capitalize}", request_path(req) %></li>
+
+  <% if current_user.owner && current_user.sitter %>
+    <p>Requests for Sitter</p>
+        <ul>
+          <% @owner_requests.each do |req| %>
+            <li><%= link_to "#{req.service.capitalize}: #{req.animal.capitalize}", request_path(req) %></li>
+          <% end %>
+        </ul>
+    <p>Requests for Sitting</p>
+      <ul>
+        <% @sitter_requests.each do |req| %>
+          <li><%= link_to "#{req.service.capitalize}: #{req.animal.capitalize}", request_path(req) %></li>
+        <% end %>
+      </ul>
+  <% else %>
+    <ul>
+      <% @requests.each do |req| %>
+        <li><%= link_to "#{req.service.capitalize}: #{req.animal.capitalize}", request_path(req) %></li>
+      <% end %>
+    </ul>
   <% end %>
-</ul>
 
 <% if current_user %>
   <%= link_to "Home", root_path %>
