@@ -1,5 +1,5 @@
 class RequestsController < ApplicationController
-  before_action :set_request, only: [:show, :update, :destroy, :submit_confirm, :update_confirm]
+  before_action :set_request, only: [:show, :edit, :update, :destroy, :submit_confirm, :update_confirm]
 
   def index
     @all_requests = policy_scope(Request)
@@ -33,6 +33,10 @@ class RequestsController < ApplicationController
     end
   end
 
+  def edit
+    authorize(@request)
+  end
+  
   def update
     # As sitter, I can update rq for accept/decline
     # @request = Request.find(params[:id])
