@@ -33,7 +33,9 @@ class RequestPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      if user.owner
+      if user.owner && user.sitter
+        scope.where('owner_id = :user_id or sitter_id = :user_id', { user_id: user.id })
+      elsif user.owner
         scope.where(owner: user)
       elsif user.sitter
         scope.where(sitter: user)
