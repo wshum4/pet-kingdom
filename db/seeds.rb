@@ -8,6 +8,9 @@
 
 # sitter
 
+User.delete_all
+Request.delete_all
+
 wince = User.new(
   email: 'wince@email.com',
   password: '123456',
