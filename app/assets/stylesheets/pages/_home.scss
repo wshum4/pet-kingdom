@@ -1,1 +1,26 @@
 // Specific CSS for your home-page
+.home_page {
+  background-position: center;
+  background-size: cover;
+  background-image: url(https://res.cloudinary.com/claidy/image/upload/v1597844135/main_view_background_page_aokq2x.jpg);
+  min-height: calc(100vh - 66px - 112px);
+  width: 100%;
+  opacity: 0.9;
+}
+ .name h1{
+  font-size: 67px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding-top: 60px;
+  text-shadow: 2px 2px rgba(255, 255, 255, 0.6);
+}
+.us{
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  color: #ade8f4;
+}

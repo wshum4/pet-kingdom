@@ -1,0 +1,22 @@
+.footer {
+    // position: absolute;
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;
+    bottom: 0;
+    background-color: #255C69;
+
+}
+.btn_footer {
+  display: flex;
+  align-items: center;
+}
+.icons {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  i {
+    font-size: 30px;
+    padding: 10px;
+  }
+}
