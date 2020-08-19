@@ -8,9 +8,12 @@
 
 # sitter
 
-User.delete_all
+puts "Deleting all records..."
 Request.delete_all
+User.delete_all
+puts "Records deleted."
 
+puts "Creating Users..."
 wince = User.new(
   email: 'wince@email.com',
   password: '123456',
@@ -71,6 +74,7 @@ daniel.save
 owners = [meagan, daniel]
 sitters = [meagan, kat, wince]
 
+puts "Creating Requests..."
 10.times do
   request = Request.new(
     service: ['walking', 'grooming', 'sitting'].sample,
