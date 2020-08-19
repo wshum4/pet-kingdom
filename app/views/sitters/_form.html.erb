@@ -4,8 +4,9 @@
   <%= f.input :start_date %>
   <%= f.input :end_date %>
   <%= f.input :price %>
-  <%= f.input :animal_info%>
+  <%= f.input :animal_info, placeholder: "Any animal-specific information" %>
+  <p>Check if sitter should come to your house</p>
   <%= f.input :housing %>
-  <%= f.input :message %>
+  <%= f.input :message, placeholder: "Any additional information" %>
   <%= f.submit %>
 <% end %>

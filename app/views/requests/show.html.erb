@@ -5,7 +5,10 @@
 <p>Start Date: <%= @request.start_date %></p>
 <p>End Date: <%= @request.end_date %></p>
 <p>Accepted: <%= @request.accepted %></p>
-<% if current_user.sitter %>
+<p>Animal Info: <%= @request.animal_info %></p>
+<p>Messages: <%= @request.message %></p>
+<p></p>
+<% if current_user.sitter && @request.sitter == current_user %>
   <%= button_to "Accept", update_request_path(@request), { method: :patch, class: "btn btn-success", params: { "request[accepted]" => true} } %>
   <%= button_to "Decline", update_request_path(@request), { method: :patch, class: "btn btn-danger", params: { "request[accepted]" => false} } %>
 <% end %>
