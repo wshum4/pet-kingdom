@@ -1,20 +1,67 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>PetKingdom</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>PetKingdom</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
-  </head>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+</head>
 
-  <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <!-- put in here navbar and footer -->
-    <%= yield %>
-  </body>
+<body>
+
+  <!-- put in here navbar and footer -->
+  <!-- Navigation bar -->
+  <div class="pets_nav">
+    <div class="pets_logo">
+      <img src="https://res.cloudinary.com/claidy/image/upload/c_scale,w_140/v1597808467/118144298_311516283528682_1342525650489959346_n_coqf3g.jpg"
+      width="90" height="80" alt="logo cute animals">
+    </div>
+    <div class="pets_nav_items">
+      <a class="nav-link" href="#">Sign in</a>
+      <a class="nav-link" href="#">Sign up</a>
+
+      <div class="dropdown">
+        <button class="dropbtn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Language
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#">EN</a>
+          <a class="dropdown-item" href="#">FR</a>
+
+        </div>
+      </div>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn-pets-search my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+  <!-- <p class="notice"><%= notice %></p> -->
+  <p class="alert"><%= alert %></p>
+  <%= yield %>
+  <!-- Footer -->
+  <footer class="info-color-dark text-center py-2 footer">
+      <div class="icons">
+          <i class="fab fa-instagram"></i>
+          <i class="fab fa-facebook"></i>
+          <i class="fab fa-twitter-square"></i>
+          <i class="fab fa-linkedin"></i>
+      </div>
+      <div class="btn_footer">
+      <a id="footer-link-contact" href="/general/contact/"
+          class="dropbtn">Contact us <i
+              class="fas fa-envelope white-text ml-2"> </i>
+      </a>
+      <a id="footer-link-contact" href="/general/contact/"
+          class="dropbtn">Help <i class="fas fa-envelope white-text ml-2">
+          </i>
+      </a>
+    </div>
+  </footer>
+</body>
 </html>
