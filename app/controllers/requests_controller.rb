@@ -24,7 +24,7 @@ class RequestsController < ApplicationController
     @request.sitter = @sitter
     authorize(@request)
     if @request.save
-      redirect_to submit_confirm_path(@request)
+      redirect_to submit_confirm_request_path(@request)
     else
       render 'sitters/show'
     end
