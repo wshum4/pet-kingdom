@@ -9,6 +9,7 @@ class SittersController < ApplicationController
   def show
     @sitter = User.find(params[:id])
     @request = Request.new
+    @reviews = @sitter.reviews
     authorize(@sitter)
   end
 end

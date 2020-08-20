@@ -8,6 +8,7 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @request = Request.find(params[:request_id])
+    @review.request = @request
     authorize(@review)
     if @review.save
       redirect_to request_path(@request)

@@ -44,7 +44,7 @@ class RequestsController < ApplicationController
     # call set price method in request model to set price
     @request.set_price
     if @request.save
-      render :update_confirm
+      redirect_to update_confirm_request_path(@request)
     else
       render 'show'
     end

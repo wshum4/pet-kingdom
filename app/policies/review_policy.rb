@@ -1,10 +1,10 @@
 class ReviewPolicy < ApplicationPolicy
   def new?
-    user.sitter
+    user.owner
   end
 
   def create?
-    user.sitter
+    user.owner
   end
 
   class Scope < Scope
