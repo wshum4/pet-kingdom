@@ -8,5 +8,7 @@ class User < ApplicationRecord
   has_many :requests_as_sitter, source: :requests, foreign_key: :sitter_id
   has_many :sitter_accepted_animals
 
+  has_one_attached :photo
+
   validates :first_name, :last_name, presence: true
 end
