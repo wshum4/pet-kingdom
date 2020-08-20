@@ -12,8 +12,5 @@
 <% end %>
 
 <h2>Make a new Request</h2>
-<div class="modal">
-  <div class="form">
-  <%= render "form", sitter: @sitter, request: @request %>
-</div>
+ <%= render "form", sitter: @sitter, request: @request %>
 <%= link_to 'Back to Sitters', sitters_path %>
