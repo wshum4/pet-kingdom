@@ -4,7 +4,7 @@
 <p>Location: <%= @sitter.address %></p>
 
 <h2>Reviews for <%= @sitter.first_name %></h2>
-<% if @reviews.nil? %>
+<% unless @reviews.exists? %>
   <p>There are currently no reviews...</p>
 <% else %>
   <% @reviews.each do |review| %>

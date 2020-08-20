@@ -1,11 +1,11 @@
 class SittersController < ApplicationController
   def index
-    @sitters = policy_scope(User).where(sitter: true)
+    @sitters = policy_scope(User).where(sitter: true).where('id != ?', current_user.id)
     unless authorize(User)
       redirect_to root_path
     end
 
-    @sitters = User.geocoded # returns sitter with coordinates
+    # @sitters = User.geocoded # returns sitter with coordinates
 
     @markers = @sitters.map do |sitter|
       {
