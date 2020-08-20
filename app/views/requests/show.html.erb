@@ -18,6 +18,6 @@
   <%= button_to "Edit Request", edit_request_path(@request), { method: :get, class: "btn btn-secondary"} %>
   <%= button_to "Delete Request", request_path(@request), { method: :delete, class: "btn btn-danger" } %>
 <% end %>
-<% if @request.accepted && @request.owner == current_user && @request.reviews.nil? %>
+<% if @request.accepted && @request.owner == current_user && @request.reviews.empty? %>
   <%= button_to "New Review", new_request_review_path(@request), { method: :get, class: "btn btn-primary" } %>
 <% end %>
