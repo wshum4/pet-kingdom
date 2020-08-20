@@ -20,8 +20,7 @@ wince = User.new(
   password_confirmation: '123456',
   sitter: true,
   owner: false,
-  verified: true,
-  local_area: Faker::Address.community,
+  address: "1367 1st Avenue, New York, NY 10021",
   details: "An avid dog lover",
   first_name: "Wince",
   last_name: "Shum"
@@ -33,8 +32,7 @@ meagan = User.new(
   password_confirmation: '123456',
   sitter: true,
   owner: true,
-  verified: true,
-  local_area: Faker::Address.community,
+  address: "170 E 76th Street, New York, NY 10075",
   details: "An avid dog lover",
   first_name: "Meagan",
   last_name: "Butters"
@@ -46,8 +44,7 @@ daniel = User.new(
   password_confirmation: '123456',
   sitter: false,
   owner: true,
-  verified: true,
-  local_area: Faker::Address.community,
+  address: "240 E 76th Street, New York, NY 10021",
   details: "An avid cat lover",
   first_name: "Daniel",
   last_name: "Lee"
@@ -59,8 +56,7 @@ kat = User.new(
   password_confirmation: '123456',
   sitter: true,
   owner: false,
-  verified: true,
-  local_area: Faker::Address.community,
+  address: "165A E 73rd Street, New York, NY 10021",
   details: "An avid dog lover",
   first_name: "Ekaterina",
   last_name: "Andriushova"
