@@ -74,7 +74,7 @@ sitters = [meagan, kat, wince]
 puts "Creating Requests..."
 10.times do
   request = Request.new(
-    service: ['Walking', 'Grooming', 'Sitting'].sample,
+    service: ['Walking', 'Grooming', 'Sitting', 'Cuddling'].sample,
     start_date: DateTime.now,
     end_date: DateTime.now + 1,
     animal: ['cat', 'dog'].sample,
