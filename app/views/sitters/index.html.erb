@@ -1,47 +1,48 @@
-<div class="backgrond" style='background-image: url(https://res.cloudinary.com/claidy/image/upload/v1597945224/etienne-girardet-SHKg9ZV16QU-unsplash_hd6mcv.jpg); height: 100%; width: 100%'>
-<div class="header1">
-  <h1>Available sitters</h1>
-</div>
+<div class="main_div" style='background-image: url(https://res.cloudinary.com/claidy/image/upload/v1597945224/etienne-girardet-SHKg9ZV16QU-unsplash_hd6mcv.jpg); height: 100vh; width: 100%'>
+  <div class="header1">
+    <h1>Available sitters</h1>
+  </div>
 
 
-<div class="container">
-  <div class="sitter_cards">
-     <% @sitters.each do |sitter| %>
-     <div class="card_list_sitter">
-      <!-- replace img tag with codinary img tag -->
-
-      <% if sitter.photo.attached? %>
-        <%= cl_image_tag sitter.photo.key %>
-       <% else %>
-        <img src="https://res.cloudinary.com/claidy/image/upload/v1597940660/erik-lucatero-d2MSDujJl2g-unsplash_xizsoo.jpg">
-        <% end %>
+  <div class="container">
+    <div class="row">
+      <% @sitters.each do |sitter| %>
+      <div class="col-md-4">
+        <!-- replace img tag with codinary img tag -->
+        <div class="card_list_sitter">
+          <% if sitter.photo.attached? %>
+          <%= cl_image_tag sitter.photo.key %>
+          <% else %>
+          <img src="https://res.cloudinary.com/claidy/image/upload/v1597940660/erik-lucatero-d2MSDujJl2g-unsplash_xizsoo.jpg">
+          <% end %>
           <div class="card_sitter_infos">
             <h2><%= sitter.first_name %></h2>
             <p><%= sitter.address %></p>
           </div>
+        </div>
       </div>
-     <% end %>
+      <% end %>
+    </div>
+  </div>
+
+
+  <ul>
+    <% @sitters.each do |sitter| %>
+    <% unless sitter == current_user%>
+    <li><%= link_to sitter.first_name, sitter_path(sitter) %></li>
+    <% end %>
+    <%end%>
+  </ul>
+
+  <div class="btn_body">
+    <%= link_to 'Home', root_path %>
+    <br>
+    <%= link_to "Log Out", destroy_user_session_path, method: :delete%>
   </div>
 </div>
 
 
-<ul>
-  <% @sitters.each do |sitter| %>
-    <% unless sitter == current_user%>
-    <li><%= link_to sitter.first_name, sitter_path(sitter) %></li>
-    <% end %>
-  <%end%>
-</ul>
-
-
-<%= link_to 'Home', root_path %>
-<br>
-<%= link_to "Log Out", destroy_user_session_path, method: :delete%>
-
-
-
-
-<div class="container">
+<!-- <div class="container">
   <div class="row">
     <div class="col-md-4">
       <div class="card_list_sitter">
@@ -98,7 +99,7 @@
     </div>
   </div>
 </div>
-</div>
+</div> -->
 
 
 

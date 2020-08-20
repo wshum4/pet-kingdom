@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # sitter
+require "open-uri"
 
 puts "Deleting all records..."
 Request.delete_all
@@ -25,6 +26,9 @@ wince = User.new(
   first_name: "Wince",
   last_name: "Shum"
 )
+file = URI.open("https://res.cloudinary.com/claidy/image/upload/v1597944963/joel-mott-LaK153ghdig-unsplash_ufnf6e.jpg")
+wince.photo.attach(io: file, filename: 'wince.jpg', content_type: 'image/jpg')
+
 
 meagan = User.new(
   email: 'meagan@email.com',
@@ -37,6 +41,9 @@ meagan = User.new(
   first_name: "Meagan",
   last_name: "Butters"
 )
+file = URI.open("https://res.cloudinary.com/claidy/image/upload/v1597944959/zulmaury-saavedra-kXC0dbqtRe4-unsplash_gckapv.jpg")
+meagan.photo.attach(io: file, filename: 'meagan.jpg', content_type: 'image/jpg')
+
 
 daniel = User.new(
   email: 'daniel@email.com',
@@ -49,6 +56,8 @@ daniel = User.new(
   first_name: "Daniel",
   last_name: "Lee"
 )
+file = URI.open("https://res.cloudinary.com/claidy/image/upload/v1597940660/erik-lucatero-d2MSDujJl2g-unsplash_xizsoo.jpg")
+daniel.photo.attach(io: file, filename: 'daniel.jpg', content_type: 'image/jpg')
 
 kat = User.new(
   email: 'kat@email.com',
@@ -61,6 +70,9 @@ kat = User.new(
   first_name: "Ekaterina",
   last_name: "Andriushova"
 )
+file = URI.open("https://res.cloudinary.com/claidy/image/upload/v1597944968/jamie-brown-wm4DuvIpLj8-unsplash_izndbe.jpg")
+kat.photo.attach(io: file, filename: 'kat.jpg', content_type: 'image/jpg')
+
 
 wince.save
 meagan.save
