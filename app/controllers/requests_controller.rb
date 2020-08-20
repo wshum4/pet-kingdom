@@ -22,6 +22,8 @@ class RequestsController < ApplicationController
     @request.owner = current_user
     @sitter = User.find(params[:id])
     @request.sitter = @sitter
+    # call set price method in request model to set price
+    set_price
     authorize(@request)
     if @request.save
       redirect_to submit_confirm_path(@request)
@@ -33,12 +35,14 @@ class RequestsController < ApplicationController
   def edit
     authorize(@request)
   end
-  
+
   def update
     # As sitter, I can update rq for accept/decline
     # @request = Request.find(params[:id])
     authorize(@request)
     @request.update(request_params)
+    # call set price method in request model to set price
+    set_price
     if @request.save
       render :update_confirm
     else
@@ -71,6 +75,18 @@ class RequestsController < ApplicationController
   end
 
   def request_params
-    params.require(:request).permit(:service, :start_date, :end_date, :price, :animal, :animal_info, :housing, :message, :accepted)
+    params.require(:request).permit(:service, :start_date, :end_date, :animal, :animal_info, :housing, :message, :accepted)
+  end
+
+  def set_price
+    if @request.service == 'Grooming'
+      @request.price = 65
+    elsif @request.service == 'Walking'
+      @request.price = 30
+    elsif @request.service == 'Sitting'
+      @request.price = 50
+    elsif @request.service == 'Cuddling'
+      @request.price = 25
+    end
   end
 end

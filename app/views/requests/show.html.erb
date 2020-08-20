@@ -1,7 +1,7 @@
 <h2><%= @request.service.capitalize %>: <%= @request.animal.capitalize %></h2>
 <p>Requested by: <%= @request.owner.first_name.capitalize %></p>
 <p>For: <%= @request.sitter.first_name.capitalize %></p>
-<p>Price: <%= @request.price %></p>
+<p>Price: $<%= @request.price %></p>
 <p>Start Date: <%= @request.start_date %></p>
 <p>End Date: <%= @request.end_date %></p>
 <p>Accepted: <%= @request.accepted %></p>
