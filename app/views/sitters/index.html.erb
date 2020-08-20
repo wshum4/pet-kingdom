@@ -1,28 +1,29 @@
-<div class="backgrond" style='background-image: url(https://res.cloudinary.com/claidy/image/upload/v1597945224/etienne-girardet-SHKg9ZV16QU-unsplash_hd6mcv.jpg); height: 100%; width: 100%'>
-<div class="header1">
-  <h1>Available sitters</h1>
-</div>
-
+<div class="main_div" style='background-image: url(https://res.cloudinary.com/claidy/image/upload/v1597945224/etienne-girardet-SHKg9ZV16QU-unsplash_hd6mcv.jpg); height: 100vh; width: 100%'>
+  <div class="header1">
+    <h1>Available sitters</h1>
+  </div>
 
 <div class="container">
-  <div class="sitter_cards">
-    <% @sitters.each do |sitter| %>
-     <%= link_to sitter_path(sitter) do %>
-        <div class="card_list_sitter">
-          <!-- replace img tag with codinary img tag -->
-
-          <% if sitter.photo.attached? %>
-            <%= cl_image_tag sitter.photo.key %>
-           <% else %>
-            <img src="https://res.cloudinary.com/claidy/image/upload/v1597940660/erik-lucatero-d2MSDujJl2g-unsplash_xizsoo.jpg">
-          <% end %>
-          <div class="card_sitter_infos">
-            <h2><%= sitter.first_name %></h2>
-            <p><%= sitter.address %></p>
+  <div class="row">
+    <div class="sitter_cards">
+      <% @sitters.each do |sitter| %>
+        <%= link_to sitter_path(sitter) do %>
+          <div class="col-md-4">
+            <div class="card_list_sitter">
+              <% if sitter.photo.attached? %>
+                <%= cl_image_tag sitter.photo.key %>
+              <% else %>
+                <img src="https://res.cloudinary.com/claidy/image/upload/v1597940660/erik-lucatero-d2MSDujJl2g-unsplash_xizsoo.jpg">
+              <% end %>
+            </div>
+            <div class="card_sitter_infos">
+              <h2><%= sitter.first_name %></h2>
+              <p><%= sitter.address %></p>
+            </div>
           </div>
-        </div>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
 </div>
 
@@ -33,64 +34,3 @@
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 </div>
-
-<!--
-<div class="container">
-  <div class="row">
-    <div class="col-md-4">
-      <div class="card_list_sitter">
-        <img src="https://res.cloudinary.com/claidy/image/upload/v1597940660/erik-lucatero-d2MSDujJl2g-unsplash_xizsoo.jpg">
-          <div class="card_sitter_infos">
-            <h2>Daniel Smith</h2>
-            <p>25 y.o, Griffintown, Montreal, Canada</p>
-          </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<br>
-<div class="container">
-  <div class="row">
-    <div class="col-md-4">
-      <div class="card_list_sitter">
-        <img src="https://res.cloudinary.com/claidy/image/upload/v1597944968/jamie-brown-wm4DuvIpLj8-unsplash_izndbe.jpg">
-          <div class="card_sitter_infos">
-            <h2>Ekaterina Spr</h2>
-            <p> 27 y.o, Hochelaga, Montreal, Canada</p>
-          </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<br>
-<div class="container">
-  <div class="row">
-    <div class="col-md-4">
-      <div class="card_list_sitter">
-        <img src="https://res.cloudinary.com/claidy/image/upload/v1597944959/zulmaury-saavedra-kXC0dbqtRe4-unsplash_gckapv.jpg">
-          <div class="card_sitter_infos">
-            <h2>Meagan Alm</h2>
-            <p> 21 y.o, Mile end, Montreal, Canada</p>
-          </div>
-      </div>
-    </div>
-  </div>
-</div>
-<br>
-<div class="container">
-  <div class="row">
-    <div class="col-md-4">
-      <div class="card_list_sitter">
-        <img src="https://res.cloudinary.com/claidy/image/upload/v1597944963/joel-mott-LaK153ghdig-unsplash_ufnf6e.jpg">
-          <div class="card_sitter_infos">
-            <h2> Wince Alter</h2>
-            <p> 30y.o, Hochelaga, Montreal, Canada</p>
-          </div>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
--->
