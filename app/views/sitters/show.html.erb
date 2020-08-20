@@ -3,6 +3,6 @@
 <p>Details: <%= @sitter.details %></p>
 <p>Location: <%= @sitter.address %></p>
 <br>
-<%= render "requests/form", sitter: @sitter, request: @request %>
+<%= render "form", sitter: @sitter, request: @request %>
 <br>
 <%= link_to 'Back to Sitters', sitters_path %>
