@@ -10,7 +10,7 @@
     <p><%= review.content %></p>
   </div>
 <% end %>
+
 <h2>Make a new Request</h2>
-<%= render "form", sitter: @sitter, request: @request %>
-<br>
+ <%= render "form", sitter: @sitter, request: @request %>
 <%= link_to 'Back to Sitters', sitters_path %>
