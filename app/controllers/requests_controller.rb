@@ -26,7 +26,7 @@ class RequestsController < ApplicationController
     @request.set_price
     authorize(@request)
     if @request.save
-      redirect_to submit_confirm_path(@request)
+      redirect_to submit_confirm_request_path(@request)
     else
       render 'sitters/show'
     end
@@ -44,7 +44,7 @@ class RequestsController < ApplicationController
     # call set price method in request model to set price
     @request.set_price
     if @request.save
-      render :update_confirm
+      redirect_to update_confirm_request_path(@request)
     else
       render 'show'
     end

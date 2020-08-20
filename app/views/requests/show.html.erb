@@ -14,8 +14,10 @@
   <%= button_to "Accept", update_request_path(@request), { method: :patch, class: "btn btn-success", params: { "request[accepted]" => true} } %>
   <%= button_to "Decline", update_request_path(@request), { method: :patch, class: "btn btn-danger", params: { "request[accepted]" => false} } %>
 <% end %>
-<% if current_user.owner && !@request.accepted && @request.sitter != current_user %>
+<% if current_user.owner && @request.sitter != current_user %>
   <%= button_to "Edit Request", edit_request_path(@request), { method: :get, class: "btn btn-secondary"} %>
   <%= button_to "Delete Request", request_path(@request), { method: :delete, class: "btn btn-danger" } %>
 <% end %>
-
+<% if @request.accepted && @request.owner == current_user %>
+  <%= button_to "New Review", new_request_review_path(@request), { method: :get, class: "btn btn-primary" } %>
+<% end %>

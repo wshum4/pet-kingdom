@@ -1,5 +1,5 @@
 <%= simple_form_for [sitter, request] do |f| %>
-  <%= f.input :service %>
+  <%= f.input :service, :collection => ['Grooming', 'Walking', 'Sitting', 'Cuddling'] %>
   <%= f.input :animal %>
   <%= f.input :start_date %>
   <%= f.input :end_date %>
