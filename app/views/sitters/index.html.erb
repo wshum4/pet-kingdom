@@ -5,17 +5,15 @@
 
 <div class="container">
   <div class="row">
-    <div class="sitter_cards">
+    <div class="col-md-6">
       <% @sitters.each do |sitter| %>
         <%= link_to sitter_path(sitter) do %>
-          <div class="col-md-4">
-            <div class="card_list_sitter">
-              <% if sitter.photo.attached? %>
-                <%= cl_image_tag sitter.photo.key %>
-              <% else %>
-                <img src="https://res.cloudinary.com/claidy/image/upload/v1597940660/erik-lucatero-d2MSDujJl2g-unsplash_xizsoo.jpg">
-              <% end %>
-            </div>
+          <div class="card_list_sitter">
+            <% if sitter.photo.attached? %>
+              <%= cl_image_tag sitter.photo.key %>
+            <% else %>
+              <img src="https://res.cloudinary.com/claidy/image/upload/v1597940660/erik-lucatero-d2MSDujJl2g-unsplash_xizsoo.jpg">
+            <% end %>
             <div class="card_sitter_infos">
               <h2><%= sitter.first_name %></h2>
               <p><%= sitter.address %></p>
@@ -24,13 +22,13 @@
         <% end %>
       <% end %>
     </div>
+    <div class="col-md-6">
+      <div id="map"
+        style="width: 100%; height: 600px;"
+        data-markers="<%= @markers.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+    </div>
   </div>
 </div>
 
-<div class="container">
-  <div id="map"
-     style="width: 100%; height: 600px;"
-     data-markers="<%= @markers.to_json %>"
-     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-  </div>
-</div>
