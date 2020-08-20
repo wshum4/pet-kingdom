@@ -1,9 +1,9 @@
 class SittersController < ApplicationController
   def index
     @sitters = policy_scope(User).where(sitter: true)
-    unless authorize(User)
-      redirect_to root_path
-    end
+    # unless authorize(User)
+    #   redirect_to root_path
+    # end
   end
 
   def show
