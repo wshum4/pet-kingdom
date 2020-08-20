@@ -2,7 +2,19 @@
 
 <p>Details: <%= @sitter.details %></p>
 <p>Location: <%= @sitter.address %></p>
-<br>
-<%= render "form", sitter: @sitter, request: @request %>
-<br>
+
+<h2>Reviews for <%= @sitter.first_name %></h2>
+<% unless @reviews.exists? %>
+  <p>There are currently no reviews...</p>
+<% else %>
+  <% @reviews.each do |review| %>
+    <div class="request-review">
+      <h4>Rating: <%= review.rating %></h3>
+      <p><%= review.content %></p>
+    </div>
+  <% end %>
+<% end %>
+
+<h2>Make a new Request</h2>
+ <%= render "form", sitter: @sitter, request: @request %>
 <%= link_to 'Back to Sitters', sitters_path %>

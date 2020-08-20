@@ -10,6 +10,7 @@
 require "open-uri"
 
 puts "Deleting all records..."
+Review.delete_all
 Request.delete_all
 User.delete_all
 puts "Records deleted."
@@ -85,13 +86,13 @@ sitters = [meagan, kat, wince]
 puts "Creating Requests..."
 10.times do
   request = Request.new(
-    service: ['walking', 'grooming', 'sitting'].sample,
+    service: ['Walking', 'Grooming', 'Sitting', 'Cuddling'].sample,
     start_date: DateTime.now,
     end_date: DateTime.now + 1,
-    price: rand(10..50),
     animal: ['cat', 'dog'].sample,
     animal_info: Faker::Creature::Dog.meme_phrase
   )
+  request.set_price
   request.owner = owners.sample
   if request.owner == meagan
     request.sitter = [kat, wince].sample
