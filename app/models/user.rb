@@ -8,5 +8,8 @@ class User < ApplicationRecord
   has_many :requests_as_sitter, source: :requests, foreign_key: :sitter_id
   has_many :sitter_accepted_animals
 
-  validates :first_name, :last_name, presence: true
+  validates :first_name, :last_name, :address, presence: true
+
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
 end
