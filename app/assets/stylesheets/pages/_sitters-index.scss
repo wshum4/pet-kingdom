@@ -1,0 +1,12 @@
+body {
+  // background-image: url(https://res.cloudinary.com/claidy/image/upload/v1597945224/etienne-girardet-SHKg9ZV16QU-unsplash_hd6mcv.jpg);
+  min-height: calc(100vh - 66px - 112px);
+  width: 100%;
+  opacity: 0.9;
+}
+.header1 {
+  font-size: 67px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

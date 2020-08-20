@@ -14,21 +14,23 @@
 
   <body>
 
-    <!-- put in here navbar and footer -->
-    <!-- Navigation bar -->
-    <div class="d-flex flex-column justify-content-between min-vh-100">
-      <div class="pets_nav">
-        <div class="pets_logo">
-          <a href= "/"><img src="https://res.cloudinary.com/claidy/image/upload/c_scale,w_140/v1597808467/118144298_311516283528682_1342525650489959346_n_coqf3g.jpg"
-          width="90" height="80" alt="logo cute animals"></a>
-        </div>
-        <div class="pets_nav_items">
-          <% if current_user.nil? %>
-            <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
-            <%= link_to "Log In", new_user_session_path, class: "nav-link"%>
-          <% else %>
-            <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "nav-link" %>
-          <% end %>
+
+  <!-- put in here navbar and footer -->
+  <!-- Navigation bar -->
+  <div class="d-flex flex-column justify-content-between min-vh-100">
+  <div class="pets_nav">
+    <div class="pets_logo">
+      <a href= "/"><img src="https://res.cloudinary.com/claidy/image/upload/v1597938303/default_ccii6p.png"
+      width="90" height="80" alt="logo cute animals"></a>
+    </div>
+    <div class="pets_nav_items">
+      <% if current_user.nil? %>
+        <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
+        <%= link_to "Log In", new_user_session_path, class: "nav-link"%>
+      <% else %>
+        <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "nav-link" %>
+      <% end %>
+
 
           <div class="dropdown">
             <button class="dropbtn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
