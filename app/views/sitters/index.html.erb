@@ -6,31 +6,25 @@
 
 <div class="container">
   <div class="sitter_cards">
-     <% @sitters.each do |sitter| %>
-     <div class="card_list_sitter">
-      <!-- replace img tag with codinary img tag -->
+    <% @sitters.each do |sitter| %>
+     <%= link_to sitter_path(sitter) do %>
+        <div class="card_list_sitter">
+          <!-- replace img tag with codinary img tag -->
 
-      <% if sitter.photo.attached? %>
-        <%= cl_image_tag sitter.photo.key %>
-       <% else %>
-        <img src="https://res.cloudinary.com/claidy/image/upload/v1597940660/erik-lucatero-d2MSDujJl2g-unsplash_xizsoo.jpg">
-        <% end %>
+          <% if sitter.photo.attached? %>
+            <%= cl_image_tag sitter.photo.key %>
+           <% else %>
+            <img src="https://res.cloudinary.com/claidy/image/upload/v1597940660/erik-lucatero-d2MSDujJl2g-unsplash_xizsoo.jpg">
+          <% end %>
           <div class="card_sitter_infos">
             <h2><%= sitter.first_name %></h2>
             <p><%= sitter.address %></p>
           </div>
-      </div>
-     <% end %>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 </div>
-
-<ul>
-  <% @sitters.each do |sitter| %>
-    <% unless sitter == current_user%>
-    <li><%= link_to sitter.first_name, sitter_path(sitter) %></li>
-    <% end %>
-  <%end%>
-</ul>
 
 <div class="container">
   <div id="map"

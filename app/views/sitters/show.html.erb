@@ -4,11 +4,15 @@
 <p>Location: <%= @sitter.address %></p>
 
 <h2>Reviews for <%= @sitter.first_name %></h2>
-<% @reviews.each do |review| %>
-  <div class="request-review">
-    <h4>Rating: <%= review.rating %></h3>
-    <p><%= review.content %></p>
-  </div>
+<% if @reviews.empty? %>
+  <p>There are currently no reviews...</p>
+<% else %>
+  <% @reviews.each do |review| %>
+    <div class="request-review">
+      <h4>Rating: <%= review.rating %></h3>
+      <p><%= review.content %></p>
+    </div>
+  <% end %>
 <% end %>
 
 <h2>Make a new Request</h2>
