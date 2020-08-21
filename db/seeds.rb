@@ -90,7 +90,8 @@ puts "Creating Requests..."
     start_date: DateTime.now,
     end_date: DateTime.now + 1,
     animal: ['cat', 'dog'].sample,
-    animal_info: Faker::Creature::Dog.meme_phrase
+    animal_info: Faker::Creature::Dog.meme_phrase,
+    message: Faker::Company.catch_phrase
   )
   request.set_price
   request.owner = owners.sample
@@ -117,7 +118,8 @@ end
     start_date: DateTime.now,
     end_date: DateTime.now + 1,
     animal: ['cat', 'dog'].sample,
-    animal_info: Faker::Creature::Dog.meme_phrase
+    animal_info: Faker::Creature::Dog.meme_phrase,
+    message: Faker::Company.catch_phrase
   )
   req.set_price
   req.owner = meagan
