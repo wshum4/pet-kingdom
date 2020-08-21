@@ -1,0 +1,5 @@
+<%= simple_form_for [@request, @review] do |f| %>
+  <%= f.input :rating, label: 'Rating:', collection: 0..5 %>
+  <%= f.input :content, label: 'Your comments:' %>
+  <%= f.submit %>
+<% end %>

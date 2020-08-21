@@ -14,6 +14,7 @@ class RequestsController < ApplicationController
   def show
     # TODO: limit access if you are owner vs sitter
     # @request = Request.find(params[:id])
+    @review = Review.new
     authorize(@request)
   end
 
