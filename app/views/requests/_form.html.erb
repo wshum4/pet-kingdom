@@ -1,5 +1,5 @@
-<%= simple_form_for(request) do |f| %>
-  <%= f.input :service, :collection => ['Grooming', 'Walking', 'Sitting', 'Cuddling'] %>
+<%= simple_form_for(request,{class: "corners backgroundc"}) do |f| %>
+  <%= f.input :service, :collection => ['Groomings', 'Walking', 'Sitting', 'Cuddling'] %>
   <%= f.input :animal %>
   <%= f.input :start_date %>
   <%= f.input :end_date %>
