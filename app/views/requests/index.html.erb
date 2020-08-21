@@ -1,24 +1,59 @@
-<div class="main_div" style='background-image: url(https://res.cloudinary.com/claidy/image/upload/v1597945224/etienne-girardet-SHKg9ZV16QU-unsplash_hd6mcv.jpg); height: 100vh; width: 100%'>
-  <h2>All Requests</h2>
+<div class="main_div" style='background-image: url(https://res.cloudinary.com/claidy/image/upload/v1597945224/etienne-girardet-SHKg9ZV16QU-unsplash_hd6mcv.jpg); min-height: 100vh; width: 100%'>
+  <h2 class="text-center my-4">All Requests</h2>
 
-    <% if current_user.owner && current_user.sitter %>
-      <p>Requests for Sitter</p>
-          <ul>
-            <% @owner_requests.each do |req| %>
-              <li><%= link_to "#{req.service.capitalize}: #{req.animal.capitalize}", request_path(req) %></li>
-            <% end %>
-          </ul>
-      <p>Requests for Sitting</p>
-        <ul>
-          <% @sitter_requests.each do |req| %>
-            <li><%= link_to "#{req.service.capitalize}: #{req.animal.capitalize}", request_path(req) %></li>
-          <% end %>
-        </ul>
-    <% else %>
-      <ul>
-        <% @requests.each do |req| %>
-          <li><%= link_to "#{req.service.capitalize}: #{req.animal.capitalize}", request_path(req) %></li>
+  <% if current_user.owner && current_user.sitter %>
+  <div class = "d-flex container justify-content-around">
+    <div>
+      <h3 class="text-center">Requests for Sitter</h3>
+
+      <% @owner_requests.each do |req| %>
+        <%= link_to request_path(req) do %>
+          <div class="card_list_request">
+            <img src="https://res.cloudinary.com/claidy/image/upload/v1598034726/group-of-pets_wbrffd.jpg">
+          <div class="card_user_infos">
+            <p><strong>Service:</strong> <%= req.service.capitalize %></p>
+            <p><strong>Animal:</strong> <%= req.animal.capitalize %></p>
+          </div>
+          </div>
         <% end %>
-      </ul>
-    <% end %>
+      <% end %>
+
+    </div>
+    <div>
+      <h3 class="text-center">Requests for Sitting</h3>
+
+      <% @sitter_requests.each do |req| %>
+        <%= link_to request_path(req) do %>
+          <div class="card_list_request">
+            <img src="https://res.cloudinary.com/claidy/image/upload/v1598034726/group-of-pets_wbrffd.jpg">
+          <div class="card_user_infos">
+            <p><strong>Service:</strong> <%= req.service.capitalize %></p>
+            <p><strong>Animal:</strong> <%= req.animal.capitalize %></p>
+          </div>
+          </div>
+        <% end %>
+      <% end %>
+
+    </div>
+  </div>
+  <% else %>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <% @requests.each do |req| %>
+            <%= link_to request_path(req) do %>
+              <div class="card_list_request">
+                <img src="https://res.cloudinary.com/claidy/image/upload/v1598034726/group-of-pets_wbrffd.jpg">
+                <div class="card_user_infos">
+                  <p><strong>Service:</strong> <%= req.service.capitalize %></p>
+                  <p><strong>Animal:</strong> <%= req.animal.capitalize %></p>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>
+

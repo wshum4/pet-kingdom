@@ -1,73 +1,72 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>PetKingdom</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>PetKingdom</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
-  </head>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+</head>
 
-  <body>
+<body>
 
 
   <!-- put in here navbar and footer -->
   <!-- Navigation bar -->
   <div class="d-flex flex-column justify-content-between min-vh-100">
-  <div class="pets_nav">
-    <div class="pets_logo">
-      <a href= "/"><img src="https://res.cloudinary.com/claidy/image/upload/v1597938303/default_ccii6p.png"
-      width="90" height="80" alt="logo cute animals"></a>
-    </div>
-    <div class="pets_nav_items">
-      <% if current_user.nil? %>
-        <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
-        <%= link_to "Log In", new_user_session_path, class: "nav-link"%>
-      <% else %>
-        <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "nav-link" %>
-      <% end %>
-
-
-          <div class="dropdown">
-            <button class="dropbtn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Language
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="#">EN</a>
-              <a class="dropdown-item" href="#">FR</a>
-
-            </div>
-          </div>
-
+    <div class="pets_nav">
+      <div class="pets_logo">
+        <a href= "/">
+          <img src="https://res.cloudinary.com/claidy/image/upload/v1597938303/default_ccii6p.png"
+          width="90" height="80" alt="logo cute animals">
+        </a>
+      </div>
+      <div class="pets_nav_items">
+        <% if current_user.nil? %>
+          <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
+          <%= link_to "Log In", new_user_session_path, class: "nav-link"%>
+        <% else %>
+          <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "nav-link" %>
+        <% end %>
+        <div class="dropdown">
+          <button class="dropbtn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Language
+          </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#">EN</a>
+          <a class="dropdown-item" href="#">FR</a>
         </div>
       </div>
+    </div>
+  </div>
+
+
       <!-- <p class="notice"><%= notice %></p> -->
-      <p class="alert"><%= alert %></p>
-      <div>
-        <%= yield %>
-      </div>
+  <p class="alert"><%= alert %></p>
+
+  <%= yield %>
+
       <!-- Footer -->
-      <footer class="info-color-dark text-center py-2 footer">
-        <div class="icons">
-            <i class="fab fa-instagram"></i>
-            <i class="fab fa-facebook"></i>
-            <i class="fab fa-twitter-square"></i>
-            <i class="fab fa-linkedin"></i>
-        </div>
-        <div class="btn_footer">
-          <a id="footer-link-contact" href="/general/contact/"
-              class="dropbtn">Contact us <i
-                class="fas fa-envelope white-text ml-2"></i>
-          </a>
-          <a id="footer-link-contact" href="/general/contact/"
-              class="dropbtn">Help<i class="fas fa-envelope white-text ml-2"></i>
-          </a>
-        </div>
-      </footer>
+  <footer class="info-color-dark text-center py-2 footer">
+    <div class="icons">
+      <i class="fab fa-instagram"></i>
+      <i class="fab fa-facebook"></i>
+      <i class="fab fa-twitter-square"></i>
+      <i class="fab fa-linkedin"></i>
     </div>
-  </body>
+    <div class="btn_footer">
+      <a id="footer-link-contact" href="/general/contact/" class="dropbtn">
+        Contact us <i class="fas fa-envelope white-text ml-2"></i>
+      </a>
+      <a id="footer-link-contact" href="/general/contact/" class="dropbtn">
+        Help <i class="fas fa-envelope white-text ml-2"></i>
+      </a>
+    </div>
+  </footer>
+</div>
+</body>
 </html>
