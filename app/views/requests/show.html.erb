@@ -15,15 +15,16 @@
   <%= button_to "Decline", update_request_path(@request), { method: :patch, class: "btn btn-danger", params: { "request[accepted]" => false} } %>
 <% end %>
 <% if current_user.owner && @request.sitter != current_user %>
+  <!-- Button trigger modal -->
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#requestForm">
-  Edit Request
+    Edit Request
   </button>
-
-  <div class="modal fade" id="requestForm" tabindex="-1" role="document" aria-labelledby="requestForm" aria-hidden="true" data-show="false">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+  <!-- Modal -->
+  <div class="modal fade" id="requestForm" tabindex="-1" role="dialog" aria-labelledby="requestForm" aria-hidden="true">
+    <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Edit Request</h5>
+          <h5 class="modal-title" id="requestForm">Edit Request</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -36,17 +37,20 @@
   </div>
   <%= button_to "Delete Request", request_path(@request), { method: :delete, class: "btn btn-danger" } %>
 <% end %>
+
 <% if @request.accepted && @request.owner == current_user%>
   <% if @request.reviews.empty? %>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#reviewForm">
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#reviewForm2">
       Add a Review
     </button>
 
-    <div class="modal fade" id="reviewForm" tabindex="-1" role="document" aria-labelledby="reviewForm" aria-hidden="true" data-show="false">
-      <div class="modal-dialog modal-dialog-centered" role="document">
+    <!-- Modal -->
+    <div class="modal fade" id="reviewForm2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">New Review</h5>
+            <h5 class="modal-title" id="reviewForm2">New Review</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -57,9 +61,7 @@
         </div>
       </div>
     </div>
-  <% else %>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#reviewForm" disabled>
-      Add a Review
-    </button>
   <% end %>
 <% end %>
+
+
