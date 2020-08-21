@@ -27,32 +27,3 @@
   padding: 20px;
   background-color: rgba(0,0,0,0.45);
 }
-.btns_flex {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-.dropbtn {
-    background-color: #303C74;
-    color: white;
-    padding: 10px 16px;
-    margin-right: 16px;
-    margin-left: 16px;
-    font-size: 16px;
-    border: none;
-    border-radius: 50px;
-    box-shadow: 1px 1px 15px rgba(0,0,0,0.2);
-    font-family: 'Petrona', serif;
-}
-.container {
-    animation: fadeIn 3s;
-}
-@keyframes fadeIn {
- from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}

@@ -6,8 +6,10 @@
     background: linear-gradient(217deg, #ffd89b , #19547b70.71%),
             linear-gradient(127deg, #ffd89b ,#19547b 70.71%),
             linear-gradient(336deg, #ffd89b , #19547b 70.71%);
-    font-family: 'Petrona', serif;
 }
+.pets_logo {
+    }
+
 .pets_nav_items {
     display: flex;
     align-items: center;
@@ -29,4 +31,15 @@
     box-shadow: 1px 1px 15px rgba(0,0,0,0.2);
     font-family: 'Petrona', serif;
 }
-
+ // .btn-pets-search {
+ //    background-color: #303C74;
+ //    color: white;
+ //    padding: 8px 12px;
+ //    margin-right: 16px;
+ //    margin-left: 16px;
+ //    font-size: 16px;
+ //    border: none;
+ //    border-radius: 50px;
+ //    box-shadow: 1px 1px 15px rgba(0,0,0,0.2);
+ //    font-family: 'Petrona', serif;
+ // }
