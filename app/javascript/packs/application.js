@@ -33,7 +33,6 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   const mapElement = document.getElementById('map');
   if (mapElement) {
-    console.log('whatever')
     initMapbox(mapElement);
   }
 });
