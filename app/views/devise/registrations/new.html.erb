@@ -1,50 +1,53 @@
-<div class="container">
-  <div class="row">
-    <h2>Sign up</h2>
-  </div>
+<div class="main_div" style='background-image: url(https://res.cloudinary.com/claidy/image/upload/v1597945224/etienne-girardet-SHKg9ZV16QU-unsplash_hd6mcv.jpg); width: 100%'>
 
-  <div class="row">
-    <div class="col-sm-6">
-      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-        <%= f.error_notification %>
+  <div class="container">
+    <div class="row justify-content-center pt-5">
+      <h2>Sign up</h2>
+    </div>
 
-        <div class="form-inputs">
-          <%= f.input :first_name,
-                      required: true,
-                      autofocus: true,
-                      input_html: { autocomplete: "given-name" }%>
-          <%= f.input :last_name,
-                      required: true,
-                      autofocus: true,
-                      input_html: { autocomplete: "family-name" }%>
-          <p>Please check off all those that apply:</p>
-          <%= f.input :owner,
-                      as: :boolean, checked_value: true,
-                      unchecked_value: false %>
-          <%= f.input :sitter,
-                      as: :boolean, checked_value: true,
-                      unchecked_value: false %>
-          <%= f.input :email,
-                      required: true,
-                      autofocus: true,
-                      input_html: { autocomplete: "email" }%>
-          <%= f.input :password,
-                      required: true,
-                      hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                      input_html: { autocomplete: "new-password" } %>
-          <%= f.input :password_confirmation,
-                      required: true,
-                      input_html: { autocomplete: "new-password" } %>
-           <%= f.input :address %>
-          <%= f.input :photo, as: :file %>
-        </div>
+    <div class="row justify-content-center">
+      <div class="col-sm-6">
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= f.error_notification %>
 
-        <div class="form-actions">
-          <%= f.button :submit, "Sign up" %>
-        </div>
-      <% end %>
+          <div class="form-inputs">
+            <%= f.input :first_name,
+                        required: true,
+                        autofocus: true,
+                        input_html: { autocomplete: "given-name" }%>
+            <%= f.input :last_name,
+                        required: true,
+                        autofocus: true,
+                        input_html: { autocomplete: "family-name" }%>
+            <p>Please check off all those that apply:</p>
+            <%= f.input :owner,
+                        as: :boolean, checked_value: true,
+                        unchecked_value: false %>
+            <%= f.input :sitter,
+                        as: :boolean, checked_value: true,
+                        unchecked_value: false %>
+            <%= f.input :email,
+                        required: true,
+                        autofocus: true,
+                        input_html: { autocomplete: "email" }%>
+            <%= f.input :password,
+                        required: true,
+                        hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                        input_html: { autocomplete: "new-password" } %>
+            <%= f.input :password_confirmation,
+                        required: true,
+                        input_html: { autocomplete: "new-password" } %>
+             <%= f.input :address %>
+            <%= f.input :photo, as: :file %>
+          </div>
 
-      <%= render "devise/shared/links" %>
+          <div class="form-actions">
+            <%= f.button :submit, "Sign up" %>
+          </div>
+        <% end %>
+
+        <%= render "devise/shared/links" %>
+      </div>
     </div>
   </div>
 </div>
