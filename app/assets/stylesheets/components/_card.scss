@@ -36,3 +36,42 @@
 
 
 
+.card_list_request {
+  overflow: hidden;
+  background: #D3D3D3;
+  box-shadow: 0 0 15px rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  margin-top: 32px;
+  width:500px;
+
+}
+.card_user_infos {
+
+}
+.card_list_request img {
+  height: 100%;
+  width: 160px;
+  object-fit: cover;
+}
+
+.card_list_request h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+.card_list_request p {
+  font-size: 16px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+  color: black;
+
+}
+.card_list_request .card_user_infos {
+  padding: 16px;
+}
+
+
+
