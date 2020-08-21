@@ -100,4 +100,28 @@ puts "Creating Requests..."
     request.sitter = sitters.sample
   end
   request.save
+  if rand(0..5) > 4
+    puts "Creating Review..."
+    review = Review.new(
+      rating: rand(0..5),
+      content: Faker::Quote.yoda
+    )
+    review.request = request
+    review.save
+  end
 end
+
+2.times do 
+  req = Request.new(
+    service: ['Walking', 'Grooming', 'Sitting', 'Cuddling'].sample,
+    start_date: DateTime.now,
+    end_date: DateTime.now + 1,
+    animal: ['cat', 'dog'].sample,
+    animal_info: Faker::Creature::Dog.meme_phrase
+  )
+  req.set_price
+  req.owner = meagan
+  req.sitter = [kat, wince].sample
+  req.save
+end
+puts "Finished!"
