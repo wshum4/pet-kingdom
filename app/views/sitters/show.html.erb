@@ -1,13 +1,10 @@
 <div class="main_div" style='background-image: linear-gradient(rgba(255,255,255,0.3),rgba(255,255,255,0.8)), url(https://res.cloudinary.com/claidy/image/upload/v1597945224/etienne-girardet-SHKg9ZV16QU-unsplash_hd6mcv.jpg); height: 100vh; width: 100%'>
-
   <div class="container pt-5">
     <div class="row">
       <div class="col-sm-6 offset-sm-3">
         <h1><%= @sitter.first_name %> <%= @sitter.last_name %></h1>
-
         <p>Details: <%= @sitter.details %></p>
         <p>Location: <%= @sitter.address %></p>
-
         <h2>Reviews for <%= @sitter.first_name %></h2>
         <% unless @reviews.exists? %>
           <p>There are currently no reviews...</p>
@@ -20,10 +17,9 @@
           <% end %>
         <% end %>
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#requestForm">
+        <button type="button" class="btn btn-primary dropbtn" data-toggle="modal" data-target="#requestForm">
           Make New Request
         </button>
-
         <!-- Modal -->
         <div class="modal fade" id="requestForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
@@ -41,9 +37,8 @@
           </div>
         </div>
         <br>
-        <%= link_to 'Back to Sitters', sitters_path %>
+        <%= link_to 'Back to Sitters', sitters_path, class: "btn btn-secondary dropbtn" %>
       </div>
     </div>
   </div>
 </div>
-
