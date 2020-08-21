@@ -1,41 +1,42 @@
-<h1><%= @sitter.first_name %> <%= @sitter.last_name %></h1>
+<div class="main_div" style='background-image: url(https://res.cloudinary.com/claidy/image/upload/v1597945224/etienne-girardet-SHKg9ZV16QU-unsplash_hd6mcv.jpg); height: 100vh; width: 100%'>
+  <h1><%= @sitter.first_name %> <%= @sitter.last_name %></h1>
 
-<p>Details: <%= @sitter.details %></p>
-<p>Location: <%= @sitter.address %></p>
+  <p>Details: <%= @sitter.details %></p>
+  <p>Location: <%= @sitter.address %></p>
 
-<h2>Reviews for <%= @sitter.first_name %></h2>
-<% unless @reviews.exists? %>
-  <p>There are currently no reviews...</p>
-<% else %>
-  <% @reviews.each do |review| %>
-    <div class="request-review">
-      <h4>Rating: <%= review.rating %></h3>
-      <p><%= review.content %></p>
-    </div>
-  <% end %>
-<% end %>
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#requestForm">
-  Make New Request
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="requestForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="requestForm">Make a New Request</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+  <h2>Reviews for <%= @sitter.first_name %></h2>
+  <% unless @reviews.exists? %>
+    <p>There are currently no reviews...</p>
+  <% else %>
+    <% @reviews.each do |review| %>
+      <div class="request-review">
+        <h4>Rating: <%= review.rating %></h3>
+        <p><%= review.content %></p>
       </div>
-      <div class="modal-body">
-        <%= render "form", sitter: @sitter, request: @request %>
+    <% end %>
+  <% end %>
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#requestForm">
+    Make New Request
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="requestForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="requestForm">Make a New Request</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <%= render "form", sitter: @sitter, request: @request %>
+        </div>
       </div>
     </div>
   </div>
+  <br>
+  <%= link_to 'Back to Sitters', sitters_path %>
 </div>
-<br>
-<%= link_to 'Back to Sitters', sitters_path %>
-
 

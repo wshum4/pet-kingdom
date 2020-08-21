@@ -1,67 +1,68 @@
-<h2><%= @request.service.capitalize %>: <%= @request.animal.capitalize %></h2>
+<div class="main_div" style='background-image: url(https://res.cloudinary.com/claidy/image/upload/v1597945224/etienne-girardet-SHKg9ZV16QU-unsplash_hd6mcv.jpg); height: 100vh; width: 100%'>
+  <h2><%= @request.service.capitalize %>: <%= @request.animal.capitalize %></h2>
 
-<p>Requested by: <%= @request.owner.first_name.capitalize %></p>
-<p>For: <%= @request.sitter.first_name.capitalize %></p>
-<p>Price: $<%= @request.price %></p>
-<p>Start Date: <%= @request.start_date %></p>
-<p>End Date: <%= @request.end_date %></p>
-<p>Accepted: <%= @request.accepted %></p>
-<p>Animal Info: <%= @request.animal_info %></p>
-<p>Messages: <%= @request.message %></p>
-<br>
+  <p>Requested by: <%= @request.owner.first_name.capitalize %></p>
+  <p>For: <%= @request.sitter.first_name.capitalize %></p>
+  <p>Price: $<%= @request.price %></p>
+  <p>Start Date: <%= @request.start_date %></p>
+  <p>End Date: <%= @request.end_date %></p>
+  <p>Accepted: <%= @request.accepted %></p>
+  <p>Animal Info: <%= @request.animal_info %></p>
+  <p>Messages: <%= @request.message %></p>
+  <br>
 
-<% if current_user.sitter && @request.sitter == current_user %>
-  <%= button_to "Accept", update_request_path(@request), { method: :patch, class: "btn btn-success", params: { "request[accepted]" => true} } %>
-  <%= button_to "Decline", update_request_path(@request), { method: :patch, class: "btn btn-danger", params: { "request[accepted]" => false} } %>
-<% end %>
-<% if current_user.owner && @request.sitter != current_user %>
-  <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#requestForm">
-    Edit Request
-  </button>
-  <!-- Modal -->
-  <div class="modal fade" id="requestForm" tabindex="-1" role="dialog" aria-labelledby="requestForm" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="requestForm">Edit Request</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <%= render "form", request: @request %>
-        </div>
-      </div>
-    </div>
-  </div>
-  <%= button_to "Delete Request", request_path(@request), { method: :delete, class: "btn btn-danger" } %>
-<% end %>
-
-<% if @request.accepted && @request.owner == current_user%>
-  <% if @request.reviews.empty? %>
+  <% if current_user.sitter && @request.sitter == current_user %>
+    <%= button_to "Accept", update_request_path(@request), { method: :patch, class: "btn btn-success", params: { "request[accepted]" => true} } %>
+    <%= button_to "Decline", update_request_path(@request), { method: :patch, class: "btn btn-danger", params: { "request[accepted]" => false} } %>
+  <% end %>
+  <% if current_user.owner && @request.sitter != current_user %>
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#reviewForm2">
-      Add a Review
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#requestForm">
+      Edit Request
     </button>
-
     <!-- Modal -->
-    <div class="modal fade" id="reviewForm2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="requestForm" tabindex="-1" role="dialog" aria-labelledby="requestForm" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="reviewForm2">New Review</h5>
+            <h5 class="modal-title" id="requestForm">Edit Request</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            <%= render "reviews/form", review: @review %>
+            <%= render "form", request: @request %>
           </div>
         </div>
       </div>
     </div>
+    <%= button_to "Delete Request", request_path(@request), { method: :delete, class: "btn btn-danger" } %>
   <% end %>
-<% end %>
 
+  <% if @request.accepted && @request.owner == current_user%>
+    <% if @request.reviews.empty? %>
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#reviewForm2">
+        Add a Review
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="reviewForm2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="reviewForm2">New Review</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <%= render "reviews/form", review: @review %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
 
