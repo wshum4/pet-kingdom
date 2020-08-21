@@ -3,7 +3,6 @@ import mapboxgl from 'mapbox-gl';
 
 
 const buildMap = (mapElement) => {
-  console.log("hi")
   mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
   return new mapboxgl.Map({
     container: 'map',
