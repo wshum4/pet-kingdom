@@ -7,30 +7,9 @@
     <div class="us">
       <p>Whether you need in-home dog boarding, pet sitting, dog walking, or day care, Pet kingdom connects pet parents with people who’ll treat their pets like family.
 
-
-PET KINGDOM sitters are your rainy-day-pet-walkers, busy-weekend-pet-sitter and never-tired-cat-cuddller. Your every-day-belly-rubbers. Your tug-of-war players. Your middle-of-the-night-pee-breakers. Because we get it—your pet is family. And when you can’t be there, you can trust us to keep your dog happy, healthy, and sweet as ever.
-</p>
-</div>
-
-<% unless current_user.nil? %>
-  <div class="btns_flex">
-    <% if current_user.owner && current_user.sitter %>
-    <%= link_to "Your Requests", requests_path, class: "dropbtn b"%>
-    <%= link_to "All Sitters", sitters_path, class: "dropbtn b" %>
-    <% elsif current_user.owner %>
-    <%= link_to "Your Requests", requests_path, class: "dropbtn b" %>
-    <%= link_to "All Sitters", sitters_path, class: "dropbtn b" %>
-    <% elsif current_user.sitter %>
-    <%= link_to "Your Requests", requests_path, class: "dropbtn" %>
-    <% end %>
-    <% end %>
-  </div>
-</div>
-=======
       PET KINGDOM sitters are your rainy-day-pet-walkers, busy-weekend-pet-sitter and never-tired-cat-cuddller. Your every-day-belly-rubbers. Your tug-of-war players. Your middle-of-the-night-pee-breakers. Because we get it—your pet is family. And when you can’t be there, you can trust us to keep your dog happy, healthy, and sweet as ever.
       </p>
     </div>
-
 
     <% unless current_user.nil? %>
       <% if current_user.owner && current_user.sitter %>
