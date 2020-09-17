@@ -1,0 +1,7 @@
+<%= simple_form_for [owner, animal] do |f| %>
+  <%= f.input :name %>
+  <%= f.input :age %>
+  <%= f.input :description %>
+  <%= f.input :photo, as: :file %>
+  <%= f.submit %>
+<% end %>

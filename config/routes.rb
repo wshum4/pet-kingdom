@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   # get "/requests/:id/update_confirm", to: "requests#update_confirm", as: "update_confirm"
   # delete "/requests/:id", to: "requests#destroy"
 
+  resources :animals
   resources :requests, only: [:index, :show, :update, :edit, :destroy] do
     resources :reviews, only: [:new, :create]
     member do
