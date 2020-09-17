@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get "/sitters", to: "sitters#index", as: "sitters"
   get "/sitters/:id", to: "sitters#show", as: "sitter"
   post "/sitters/:id/requests", to: "requests#create", as: "user_requests"
+  post "/owners/:id/animals", to: "animals#create", as: "new_animal"
 
   # patch "/requests/:id", to: "requests#update", as: "update_request"
   # get "/requests/:id/edit", to: "requests#edit", as: "edit_request"
@@ -14,7 +15,7 @@ Rails.application.routes.draw do
   # get "/requests/:id/update_confirm", to: "requests#update_confirm", as: "update_confirm"
   # delete "/requests/:id", to: "requests#destroy"
 
-  resources :animals
+  resources :animals, except: [:new, :create]
   resources :requests, only: [:index, :show, :update, :edit, :destroy] do
     resources :reviews, only: [:new, :create]
     member do
