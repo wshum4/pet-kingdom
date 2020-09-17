@@ -1,6 +1,7 @@
 class Request < ApplicationRecord
   belongs_to :owner, class_name: "User"
   belongs_to :sitter, class_name: "User"
+  belongs_to :animal
   has_many :reviews
 
   validates :service, :start_date, :end_date, :animal, presence: true
