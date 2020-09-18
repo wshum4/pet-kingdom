@@ -7,6 +7,10 @@ class AnimalPolicy < ApplicationPolicy
     user.owner || user.sitter
   end
 
+  def new?
+    user.owner
+  end
+
   def create?
     user.owner
   end
