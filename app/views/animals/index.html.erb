@@ -4,7 +4,9 @@
   <%= animal.name %>
   <%= animal.age %>
   <%= animal.description %>
-  <%= cl_image_tag animal.photo.key, height: 300, width: 400, crop: :fill %>
+  <% if animal.photo.attached? %>
+    <%= cl_image_tag animal.photo.key, height: 300, width: 400, crop: :fill %>
+  <% end %>
 <% end %>
 
 <!-- Button trigger modal -->

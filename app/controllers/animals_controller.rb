@@ -3,7 +3,9 @@ class AnimalsController < ApplicationController
 
   def index
     @animals = policy_scope(Animal)
+    @animal = Animal.new
     authorize(Animal)
+    authorize(@animal)
     # can only display list of animals belong to owner
     if current_user.owner
       @animals = @animals.where(owner_id: current_user.id)
@@ -27,7 +29,7 @@ class AnimalsController < ApplicationController
   end
 
   def create
-    @animal = Animal.new(request_params)
+    @animal = Animal.new(animal_params)
     @animal.owner = current_user
     authorize(@animal)
     if @animal.save
