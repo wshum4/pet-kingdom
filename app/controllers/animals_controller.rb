@@ -11,6 +11,12 @@ class AnimalsController < ApplicationController
   def show
     @animal = Animal.find(params[:id])
     @animal = Animal.new
+    authorize(@animal)
+  end
+
+  def new
+    @animal = Animal.new
+    authorize(@animal)
   end
 
   def create
