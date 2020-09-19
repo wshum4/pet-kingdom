@@ -1,4 +1,6 @@
 class AnimalsController < ApplicationController
+  before_action :set_animal, only: [:show, :edit, :update, :destroy]
+
   def index
     @animals = policy_scope(Animal)
     authorize(Animal)
@@ -9,9 +11,14 @@ class AnimalsController < ApplicationController
   end
 
   def show
-    @animal = Animal.find(params[:id])
-    @animal = Animal.new
+    # @animal = Animal.find(params[:id])
     authorize(@animal)
+    if @animal = Animal.joins(:request).where(:requests.sitter_id = current_user.id) || Animal.where(owner_id: current_user.id)
+      @animal
+    else
+      flash[:alert] = "You are not authorized to see this page."
+      redirect_to(root_path)
+    end
   end
 
   def new
@@ -31,6 +38,7 @@ class AnimalsController < ApplicationController
   end
 
   def edit
+    # @animal = Animal.find(params[:id])
     authorize(@animal)
   end
 
@@ -46,7 +54,7 @@ class AnimalsController < ApplicationController
   end
 
   def destroy
-    @animal = Animal.find(params[:id])
+    # @animal = Animal.find(params[:id])
     authorize(@animal)
     @animal.destroy
     redirect_to animals_path

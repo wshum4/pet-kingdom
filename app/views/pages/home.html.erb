@@ -16,6 +16,7 @@
           <%= link_to "Your Requests", requests_path, class: "dropbtn b"%>
           <%= link_to "All Sitters", sitters_path, class: "dropbtn b" %>
         <% elsif current_user.owner %>
+          <%= link_to "Your Animals", animals_path, class: "dropbtn b" %>
           <%= link_to "Your Requests", requests_path, class: "dropbtn b" %>
           <%= link_to "All Sitters", sitters_path, class: "dropbtn b" %>
         <% elsif current_user.sitter %>
