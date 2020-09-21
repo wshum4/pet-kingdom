@@ -1,6 +1,15 @@
-<h1><%= @animal.name %></h1>
+<div class="main_div" style='background-image: linear-gradient(rgba(255,255,255,0.3),rgba(255,255,255,0.8)), url(https://res.cloudinary.com/claidy/image/upload/v1597945224/etienne-girardet-SHKg9ZV16QU-unsplash_hd6mcv.jpg); height: 100vh; width: 100%'>
+  <div class="container pt-5">
+    <div class="row">
+      <div class="col-sm-6 offset-sm-3">
 
-<%= cl_image_tag @article.photo.key, height: 300, width: 400, crop: :fill %>
-<br>
-<p>Age: <%= @animal.age %></p>
-<p>Description: <%= @animal.description %></p>
+        <h1><%= @animal.name %></h1>
+
+        <%= cl_image_tag @article.photo.key, height: 300, width: 400, crop: :fill %>
+        <br>
+        <p>Age: <%= @animal.age %></p>
+        <p>Description: <%= @animal.description %></p>
+      </div>
+    </div>
+  </div>
+</div>
