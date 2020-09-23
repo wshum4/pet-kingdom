@@ -4,7 +4,7 @@ class Request < ApplicationRecord
   belongs_to :animal
   has_many :reviews
 
-  validates :service, :start_date, :end_date, :animal, presence: true
+  validates :service, :start_date, :end_date, :animal_id, presence: true
   validates :service, acceptance: { accept: ['Grooming', 'Walking', 'Sitting', 'Cuddling'] }
 
   def set_price

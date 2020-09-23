@@ -2,7 +2,7 @@
   <div class="container pt-5">
     <div class="row">
       <div class="col-sm-6 offset-sm-3">
-        <h2><%= @request.service.capitalize %>: <%= @request.animal.capitalize %></h2>
+        <h2><%= @request.service %>: <%= @request.animal.name.capitalize %></h2>
         <p>Requested by: <%= @request.owner.first_name.capitalize %></p>
         <p>For: <%= @request.sitter.first_name.capitalize %></p>
         <p>Price: $<%= @request.price %></p>
@@ -19,7 +19,7 @@
             <%= button_to "Decline", update_request_path(@request), { method: :patch, class: "btn btn-danger dropbtn", params: { "request[accepted]" => false} } %>
           </div>
         <% end %>
-      
+
         <% if current_user.owner && @request.sitter != current_user %>
           <!-- Button trigger modal -->
           <div class="d-flex">
@@ -72,7 +72,7 @@
             </div>
           <% end %>
         <% end %>
-        
+
       </div>
     </div>
   </div>

@@ -23,6 +23,8 @@ class RequestsController < ApplicationController
     @request.owner = current_user
     @sitter = User.find(params[:id])
     @request.sitter = @sitter
+    @animals = current_user.animals
+    # @animals = Animal.where(owner_id: current_user.id)
     # call set price method in request model to set price
     @request.set_price
     authorize(@request)
@@ -76,6 +78,6 @@ class RequestsController < ApplicationController
   end
 
   def request_params
-    params.require(:request).permit(:service, :start_date, :end_date, :animal, :animal_info, :housing, :message, :accepted)
+    params.require(:request).permit(:service, :start_date, :end_date, :animal_id, :animal_info, :housing, :message, :accepted)
   end
 end
