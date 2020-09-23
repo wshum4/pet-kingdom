@@ -10,9 +10,15 @@
 require "open-uri"
 
 puts "Deleting all records..."
-Review.delete_all
 Request.delete_all
+Animal.delete_all
 User.delete_all
+Review.delete_all
+
+ActiveRecord::Base.connection.tables.each do |t|
+  ActiveRecord::Base.connection.reset_pk_sequence!(t)
+end
+
 puts "Records deleted."
 
 puts "Creating Users..."
@@ -83,53 +89,9 @@ daniel.save
 owners = [meagan, daniel]
 sitters = [meagan, kat, wince]
 
-# puts "Creating Requests..."
-# 10.times do
-#   request = Request.new(
-#     service: ['Walking', 'Grooming', 'Sitting', 'Cuddling'].sample,
-#     start_date: DateTime.now,
-#     end_date: DateTime.now + 1,
-#     animal: ['cat', 'dog'].sample,
-#     animal_info: Faker::Creature::Dog.meme_phrase,
-#     message: Faker::Company.catch_phrase
-#   )
-#   request.set_price
-#   request.owner = owners.sample
-#   if request.owner == meagan
-#     request.sitter = [kat, wince].sample
-#   else
-#     request.sitter = sitters.sample
-#   end
-#   request.save
-#   if rand(0..5) > 4
-#     puts "Creating Review..."
-#     review = Review.new(
-#       rating: rand(0..5),
-#       content: Faker::Quote.yoda
-#     )
-#     review.request = request
-#     review.save
-#   end
-# end
-
-# 2.times do
-#   req = Request.new(
-#     service: ['Walking', 'Grooming', 'Sitting', 'Cuddling'].sample,
-#     start_date: DateTime.now,
-#     end_date: DateTime.now + 1,
-#     animal: ['cat', 'dog'].sample,
-#     animal_info: Faker::Creature::Dog.meme_phrase,
-#     message: Faker::Company.catch_phrase
-#   )
-#   req.set_price
-#   req.owner = meagan
-#   req.sitter = [kat, wince].sample
-#   req.save
-# end
-
 puts "Creating Animals..."
 peanut = Animal.new(
-  owner_id: 3,
+  owner_id: 4,
   name: 'Peanut',
   age: 2,
   description: 'very friendly, doens\'t bite',
@@ -137,6 +99,70 @@ peanut = Animal.new(
 file = URI.open("https://res.cloudinary.com/claidy/image/upload/v1597944968/jamie-brown-wm4DuvIpLj8-unsplash_izndbe.jpg")
 peanut.photo.attach(io: file, filename: 'kat.jpg', content_type: 'image/jpg')
 
+coffee = Animal.new(
+  owner_id: 4,
+  name: 'Coffee',
+  age: 5,
+  description: 'very friendly, doens\'t bite',
+)
+file = URI.open("https://res.cloudinary.com/claidy/image/upload/v1597944968/jamie-brown-wm4DuvIpLj8-unsplash_izndbe.jpg")
+coffee.photo.attach(io: file, filename: 'kat.jpg', content_type: 'image/jpg')
+
+sugar = Animal.new(
+  owner_id: 4,
+  name: 'Sugar',
+  age: 10,
+  description: 'very friendly, doens\'t bite',
+)
+file = URI.open("https://res.cloudinary.com/claidy/image/upload/v1597944968/jamie-brown-wm4DuvIpLj8-unsplash_izndbe.jpg")
+sugar.photo.attach(io: file, filename: 'kat.jpg', content_type: 'image/jpg')
+
 peanut.save
+coffee.save
+sugar.save
+
+puts "Creating Requests..."
+10.times do
+  request = Request.new(
+    service: ['Walking', 'Grooming', 'Sitting', 'Cuddling'].sample,
+    start_date: DateTime.now,
+    end_date: DateTime.now + 1,
+    animal: [peanut, coffee, sugar].sample,
+    animal_info: Faker::Creature::Dog.meme_phrase,
+    message: Faker::Company.catch_phrase
+  )
+  request.set_price
+  request.owner = owners.sample
+  if request.owner == meagan
+    request.sitter = [kat, wince].sample
+  else
+    request.sitter = sitters.sample
+  end
+  request.save
+  if rand(0..5) > 4
+    puts "Creating Review..."
+    review = Review.new(
+      rating: rand(0..5),
+      content: Faker::Quote.yoda
+    )
+    review.request = request
+    review.save
+  end
+end
+
+2.times do
+  req = Request.new(
+    service: ['Walking', 'Grooming', 'Sitting', 'Cuddling'].sample,
+    start_date: DateTime.now,
+    end_date: DateTime.now + 1,
+    animal: [peanut, coffee, sugar].sample,
+    animal_info: Faker::Creature::Dog.meme_phrase,
+    message: Faker::Company.catch_phrase
+  )
+  req.set_price
+  req.owner = meagan
+  req.sitter = [kat, wince].sample
+  req.save
+end
 
 puts "Finished!"
