@@ -10,10 +10,10 @@
 require "open-uri"
 
 puts "Deleting all records..."
+Review.delete_all
 Request.delete_all
 Animal.delete_all
 User.delete_all
-Review.delete_all
 
 ActiveRecord::Base.connection.tables.each do |t|
   ActiveRecord::Base.connection.reset_pk_sequence!(t)
