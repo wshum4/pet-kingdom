@@ -1,8 +1,6 @@
 <%= simple_form_for(request) do |f| %>
   <%= f.input :service, :collection => ['Grooming', 'Walking', 'Sitting', 'Cuddling'] %>
-  <!-- <#%= f.collection_select :animal_id, Animal.all, :id, :name %> -->
-  <!-- <#%= f.input :animal %> -->
-  <%= f.association :animal, collection: @animals %>
+  <%= f.input :animal, collection: Animal.all %>
   <%= f.input :start_date %>
   <%= f.input :end_date %>
   <%= f.input :animal_info%>

@@ -2,7 +2,7 @@ class Request < ApplicationRecord
   belongs_to :owner, class_name: "User"
   belongs_to :sitter, class_name: "User"
   belongs_to :animal
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
 
   validates :service, :start_date, :end_date, :animal_id, presence: true
   validates :service, acceptance: { accept: ['Grooming', 'Walking', 'Sitting', 'Cuddling'] }
