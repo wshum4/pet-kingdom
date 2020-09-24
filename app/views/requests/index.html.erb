@@ -12,6 +12,7 @@
           <div class="card_user_infos">
             <p><strong>Service:</strong> <%= req.service %></p>
             <p><strong>Animal:</strong> <%= req.animal.name.capitalize %></p>
+            <p><strong>Accepted: </strong><%= req.accepted == true ? 'Yes' : 'No' %>
           </div>
           </div>
         <% end %>
@@ -28,6 +29,7 @@
           <div class="card_user_infos">
             <p><strong>Service:</strong> <%= req.service %></p>
             <p><strong>Animal:</strong> <%= req.animal.name.capitalize %></p>
+            <p><strong>Accepted: </strong><%= req.accepted == true ? 'Yes' : 'No' %>
           </div>
           </div>
         <% end %>
@@ -46,6 +48,7 @@
                 <div class="card_user_infos">
                   <p><strong>Service:</strong> <%= req.service %></p>
                   <p><strong>Animal:</strong> <%= req.animal.name.capitalize %></p>
+                 <p><strong>Accepted: </strong><%= req.accepted == true ? 'Yes' : 'No' %>
                 </div>
               </div>
             <% end %>

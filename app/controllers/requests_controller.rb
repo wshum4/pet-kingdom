@@ -42,6 +42,7 @@ class RequestsController < ApplicationController
   def update
     # As sitter, I can update rq for accept/decline
     # @request = Request.find(params[:id])
+    @animals = current_user.animals
     authorize(@request)
     @request.update(request_params)
     # call set price method in request model to set price

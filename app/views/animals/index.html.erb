@@ -5,14 +5,16 @@
     <div class="row">
       <div class="col-sm-6 offset-sm-3">
         <% @animals.each do |animal| %>
-          <div class="container">
-            <%= animal.name %>
-            <%= animal.age %>
-            <%= animal.description %>
-            <% if animal.photo.attached? %>
-              <%= cl_image_tag animal.photo.key, height: 300, width: 400, crop: :fill %>
-            <% end %>
-          </div>
+          <%= link_to animal_path(animal) do %>
+            <div class="container">
+              <%= animal.name %>
+              <%= animal.age %>
+              <%= animal.description %>
+              <% if animal.photo.attached? %>
+                <%= cl_image_tag animal.photo.key, height: 300, width: 400, crop: :fill %>
+              <% end %>
+            </div>
+          <% end %>
         <% end %>
 
         <!-- Button trigger modal -->
