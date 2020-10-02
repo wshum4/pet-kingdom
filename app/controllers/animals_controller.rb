@@ -4,8 +4,7 @@ class AnimalsController < ApplicationController
   def index
     @animals = policy_scope(Animal)
     @animal = Animal.new
-    authorize(Animal)
-    authorize(@animal)
+    # authorize(@animal)
     # can only display list of animals belong to owner
     if current_user.owner
       @animals = @animals.where(owner_id: current_user.id)
@@ -14,8 +13,12 @@ class AnimalsController < ApplicationController
 
   def show
     # @animal = Animal.find(params[:id])
+    @requests = @animal.requests
+    @requests = @requests.map { |request| request.sitter_id == current_user.id }
     authorize(@animal)
-    if @animal = Animal.joins(:request).where(:requests.sitter_id = current_user.id) || Animal.where(owner_id: current_user.id)
+    if current_user == @animal.owner || current_user == @requests.first.sitter
+    # if @animal = Animal.find_by(owner_id: current_user.id) || @animal = Animal.find_by(requests.first.sitter_id == current_user.id)
+    # if @animal = Animal.joins(requests: :sitter).where(requests.sitter_id = current_user.id) || Animal.where(owner_id: current_user.id)
       @animal
     else
       flash[:alert] = "You are not authorized to see this page."

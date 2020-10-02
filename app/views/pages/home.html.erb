@@ -13,6 +13,7 @@
     <% unless current_user.nil? %>
       <div class="btns_flex">
         <% if current_user.owner && current_user.sitter %>
+          <%= link_to "Your Animals", animals_path, class: "dropbtn b" %>
           <%= link_to "Your Requests", requests_path, class: "dropbtn b"%>
           <%= link_to "All Sitters", sitters_path, class: "dropbtn b" %>
         <% elsif current_user.owner %>
@@ -21,6 +22,7 @@
           <%= link_to "All Sitters", sitters_path, class: "dropbtn b" %>
         <% elsif current_user.sitter %>
           <%= link_to "Your Requests", requests_path, class: "dropbtn" %>
+          <%= link_to "Your Clients", animals_path, class: "dropbtn" %>
         <% end %>
       </div>
     <% end %>
