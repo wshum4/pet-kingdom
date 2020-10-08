@@ -27,8 +27,20 @@
   margin-bottom: 0;
   margin-top: 8px;
 }
+.animal_info h2{
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+.animal_info p{
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
 
-.card_list_sitter .card_sitter_infos {
+.card_list_sitter .card_sitter_infos .animal_info {
   padding: 16px;
 }
 
@@ -40,9 +52,7 @@
   align-items: center;
   margin-top: 32px;
   width:500px;
-}
-.card_user_infos {
-
+  margin-bottom: 45px;
 }
 .card_list_request img {
   height: 100%;

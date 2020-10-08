@@ -96,25 +96,25 @@ peanut = Animal.new(
   age: 2,
   description: 'very friendly, doens\'t bite',
 )
-file = URI.open("https://res.cloudinary.com/claidy/image/upload/v1597944968/jamie-brown-wm4DuvIpLj8-unsplash_izndbe.jpg")
+file = URI.open("https://res.cloudinary.com/claidy/image/upload/v1601397952/roberto-nickson--s5WfAx74fM-unsplash_mldlbu.jpg")
 peanut.photo.attach(io: file, filename: 'kat.jpg', content_type: 'image/jpg')
 
 coffee = Animal.new(
   owner_id: 4,
   name: 'Coffee',
   age: 5,
-  description: 'very friendly, doens\'t bite',
+  description: 'always getting the treats...',
 )
-file = URI.open("https://res.cloudinary.com/claidy/image/upload/v1597944968/jamie-brown-wm4DuvIpLj8-unsplash_izndbe.jpg")
+file = URI.open("https://res.cloudinary.com/claidy/image/upload/v1601397951/marek-szturc--zGoju8fyg8-unsplash_dd2pbs.jpg")
 coffee.photo.attach(io: file, filename: 'kat.jpg', content_type: 'image/jpg')
 
 sugar = Animal.new(
   owner_id: 4,
   name: 'Sugar',
   age: 10,
-  description: 'very friendly, doens\'t bite',
+  description: 'shy little bunny',
 )
-file = URI.open("https://res.cloudinary.com/claidy/image/upload/v1597944968/jamie-brown-wm4DuvIpLj8-unsplash_izndbe.jpg")
+file = URI.open("https://res.cloudinary.com/claidy/image/upload/v1601397950/erik-jan-leusink---SDX4KWIbA-unsplash_i1atul.jpg")
 sugar.photo.attach(io: file, filename: 'kat.jpg', content_type: 'image/jpg')
 
 peanut.save

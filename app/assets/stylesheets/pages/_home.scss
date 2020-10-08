@@ -33,7 +33,8 @@
   justify-content: center;
   margin-top: 20px;
 }
-.dropbtn {
+.dropbtn,
+.btn_test {
     background-color: #303C74;
     color: white;
     padding: 10px 16px;
@@ -55,4 +56,7 @@
   to {
     opacity: 1;
   }
+}
+.btn_test:hover{
+  background-color: #747ead;
 }

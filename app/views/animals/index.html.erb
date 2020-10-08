@@ -1,26 +1,31 @@
-<div class="main_div" style='background-image: linear-gradient(rgba(255,255,255,0.3),rgba(255,255,255,0.8)), url(https://res.cloudinary.com/claidy/image/upload/v1597945224/etienne-girardet-SHKg9ZV16QU-unsplash_hd6mcv.jpg); height: 100vh; width: 100%'>
+<div class="main_div" style='background-image: linear-gradient(rgba(255,255,255,0.3),rgba(255,255,255,0.8)), url(https://res.cloudinary.com/claidy/image/upload/v1597945224/etienne-girardet-SHKg9ZV16QU-unsplash_hd6mcv.jpg); height: 100vh; width: 100%'><div class="header1">
   <h1>My Animals</h1>
+</div>
 
-  <div class="container pt-5">
-    <div class="row">
-      <div class="col-sm-6 offset-sm-3">
+  <div class="container animal_container">
+      <div class="col-md-6">
         <% @animals.each do |animal| %>
           <%= link_to animal_path(animal) do %>
-            <div class="container">
-              <%= animal.name %>
-              <%= animal.age %>
-              <%= animal.description %>
+            <div class="card_list_sitter">
+
               <% if animal.photo.attached? %>
-                <%= cl_image_tag animal.photo.key, height: 300, width: 400, crop: :fill %>
+                <%= cl_image_tag animal.photo.key %>
               <% end %>
+              <div class="animal_info">
+                <h2><%= animal.name %></h2>
+                <p>
+                  <%= animal.age %>
+                <%= animal.description %>
+                </p>
+              </div>
             </div>
           <% end %>
         <% end %>
 
         <% if current_user.owner? %>
           <!-- Button trigger modal -->
-          <div class="d-flex">
-            <button type="button" class="btn btn-primary dropbtn" data-toggle="modal" data-target="#animalForm">
+          <div class="d-flex btn_position">
+            <button type="button" class="btn btn-primary dropbtn btn_test bpt" data-toggle="modal" data-target="#animalForm">
               Create a New Animal
             </button>
           </div>
@@ -37,6 +42,7 @@
                 <div class="modal-body">
                   <%= render "animals/form", animal: @animal %>
                 </div>
+
               </div>
             </div>
           </div>
