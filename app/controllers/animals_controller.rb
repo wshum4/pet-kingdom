@@ -6,24 +6,33 @@ class AnimalsController < ApplicationController
     @animal = Animal.new
     # authorize(@animal)
     # can only display list of animals belong to owner
+
     if current_user.owner
       @animals = @animals.where(owner_id: current_user.id)
+    # elsif current_user.sitter
+    # @animals =
+    end
+
+    if current_user.sitter
+      @animals = Animal.joins(:requests).where(requests: { sitter_id: current_user.id } )
     end
   end
 
   def show
     # @animal = Animal.find(params[:id])
-    @requests = @animal.requests
-    @requests = @requests.map { |request| request.sitter_id == current_user.id }
+    # if current_user.sitter
+    #   @requests = @animal.requests
+    #   @requests = @requests.map { |request| request.sitter_id == current_user.id }
+    # end
+
     authorize(@animal)
-    if current_user == @animal.owner || current_user == @requests.first.sitter
-    # if @animal = Animal.find_by(owner_id: current_user.id) || @animal = Animal.find_by(requests.first.sitter_id == current_user.id)
-    # if @animal = Animal.joins(requests: :sitter).where(requests.sitter_id = current_user.id) || Animal.where(owner_id: current_user.id)
-      @animal
-    else
-      flash[:alert] = "You are not authorized to see this page."
-      redirect_to(root_path)
-    end
+
+    # if current_user == @animal.owner || current_user.id == @requests.first.sitter_id
+    #   @animal
+    # else
+    #   flash[:alert] = "You are not authorized to see this page."
+    #   redirect_to(root_path)
+    # end
   end
 
   def new
