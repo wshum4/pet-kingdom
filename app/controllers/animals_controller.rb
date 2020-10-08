@@ -4,23 +4,35 @@ class AnimalsController < ApplicationController
   def index
     @animals = policy_scope(Animal)
     @animal = Animal.new
-    authorize(Animal)
-    authorize(@animal)
+    # authorize(@animal)
     # can only display list of animals belong to owner
+
     if current_user.owner
       @animals = @animals.where(owner_id: current_user.id)
+    # elsif current_user.sitter
+    # @animals =
+    end
+
+    if current_user.sitter
+      @animals = Animal.joins(:requests).where(requests: { sitter_id: current_user.id } )
     end
   end
 
   def show
     # @animal = Animal.find(params[:id])
+    # if current_user.sitter
+    #   @requests = @animal.requests
+    #   @requests = @requests.map { |request| request.sitter_id == current_user.id }
+    # end
+
     authorize(@animal)
-    if @animal = Animal.joins(:request).where(:requests.sitter_id = current_user.id) || Animal.where(owner_id: current_user.id)
-      @animal
-    else
-      flash[:alert] = "You are not authorized to see this page."
-      redirect_to(root_path)
-    end
+
+    # if current_user == @animal.owner || current_user.id == @requests.first.sitter_id
+    #   @animal
+    # else
+    #   flash[:alert] = "You are not authorized to see this page."
+    #   redirect_to(root_path)
+    # end
   end
 
   def new
