@@ -2,6 +2,7 @@
   <div class="container pt-5">
     <div class="row">
       <div class="col-sm-6 offset-sm-3">
+       <h1 class= "sitter_name"><%= @sitter.first_name %> <%= @sitter.last_name %></h1>
         <div class="avatar">
           <% if @sitter.photo.attached? %>
             <%= cl_image_tag @sitter.photo.key %>
@@ -9,7 +10,7 @@
             <img src="https://res.cloudinary.com/claidy/image/upload/v1597940660/erik-lucatero-d2MSDujJl2g-unsplash_xizsoo.jpg">
           <% end %>
         </div>
-        <h1><%= @sitter.first_name %> <%= @sitter.last_name %></h1>
+
         <p>Details: <%= @sitter.details %></p>
         <p>Location: <%= @sitter.address %></p>
         <h2>Reviews for <%= @sitter.first_name %></h2>
