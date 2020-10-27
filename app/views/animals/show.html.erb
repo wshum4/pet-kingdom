@@ -1,15 +1,19 @@
 <div class="main_div" style='background-image: linear-gradient(rgba(255,255,255,0.3),rgba(255,255,255,0.8)), url(https://res.cloudinary.com/claidy/image/upload/v1597945224/etienne-girardet-SHKg9ZV16QU-unsplash_hd6mcv.jpg); height: 100vh; width: 100%'>
-  <div class="container pt-5">
+  <div class="container pt-5 pb-5">
+    <h1 class ="animal_name"><%= @animal.name %></h1>
     <div class="row">
-      <div class="col-sm-6 offset-sm-3">
-
-        <h1><%= @animal.name %></h1>
-        <% if @animal.photo.attached? %>
-          <%= cl_image_tag @animal.photo.key, height: 300, width: 400, crop: :fill %>
-        <% end %>
-        <br>
-        <p>Age: <%= @animal.age %></p>
-        <p>Description: <%= @animal.description %></p>
+      <div class="col">
+        <div class="box_a">
+          <div class="animal_photo">
+            <% if @animal.photo.attached? %>
+              <%= cl_image_tag @animal.photo.key, height: 300, width: 400, crop: :fill %>
+            <% end %>
+          </div>
+          <div class="animal_bio">
+            <p>Age: <%= @animal.age %></p>
+            <p>Description: <%= @animal.description %></p>
+          </div>
+        </div>
       </div>
     </div>
   </div>

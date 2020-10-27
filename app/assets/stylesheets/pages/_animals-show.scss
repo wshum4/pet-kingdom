@@ -1,0 +1,24 @@
+.box_a {
+  display: flex;
+  justify-content: space-evenly;
+}
+.animal_name {
+  text-align: center;
+}
+.animal_bio  {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  border: 3px double grey;
+  border-radius: 4px;
+  padding: 5px;
+}
+
+.animal_photo {
+  border: 1px double grey;
+  border-radius: 4px;
+  padding: 5px;
+
+}

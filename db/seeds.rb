@@ -77,7 +77,7 @@ kat = User.new(
   first_name: "Ekaterina",
   last_name: "Andriushova"
 )
-file = URI.open("https://res.cloudinary.com/claidy/image/upload/v1597944968/jamie-brown-wm4DuvIpLj8-unsplash_izndbe.jpg")
+file = URI.open("https://res.cloudinary.com/claidy/image/upload/v1603769817/brooke-cagle-HRZUzoX1e6w-unsplash_gge4w9.jpg")
 kat.photo.attach(io: file, filename: 'kat.jpg', content_type: 'image/jpg')
 
 
