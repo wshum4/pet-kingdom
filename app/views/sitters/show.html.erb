@@ -1,53 +1,94 @@
 <div class="main_div" style='background-image: linear-gradient(rgba(255,255,255,0.3),rgba(255,255,255,0.8)), url(https://res.cloudinary.com/claidy/image/upload/v1597945224/etienne-girardet-SHKg9ZV16QU-unsplash_hd6mcv.jpg); height: 100vh; width: 100%'>
-  <div class="container pt-5">
+  <div class="container pt-5 pb-5">
+    <h1 class= "sitter_name"><%= @sitter.first_name %> <%= @sitter.last_name %></h1>
     <div class="row">
-      <div class="col-sm-6 offset-sm-3">
-       <h1 class= "sitter_name"><%= @sitter.first_name %> <%= @sitter.last_name %></h1>
-        <div class="avatar">
-          <% if @sitter.photo.attached? %>
-            <%= cl_image_tag @sitter.photo.key %>
-          <% else %>
-            <img src="https://res.cloudinary.com/claidy/image/upload/v1597940660/erik-lucatero-d2MSDujJl2g-unsplash_xizsoo.jpg">
-          <% end %>
-        </div>
+      <div class="col_s">
+        <div class="avatar sitter_photo">
+            <% if @sitter.photo.attached? %>
+              <%= cl_image_tag @sitter.photo.key %>
+            <% else %>
+              <img src="https://res.cloudinary.com/claidy/image/upload/v1597940660/erik-lucatero-d2MSDujJl2g-unsplash_xizsoo.jpg">
+            <% end %>
+           <div class="sitter_bio">
+            <p>Details: <%= @sitter.details %></p>
+            <p>Location: <%= @sitter.address %></p>
+           </div>
+           </div>
 
-        <p>Details: <%= @sitter.details %></p>
-        <p>Location: <%= @sitter.address %></p>
-        <h2>Reviews for <%= @sitter.first_name %></h2>
-        <% if @reviews.nil? %>
-          <p>There are currently no reviews...</p>
-        <% else %>
-          <% @reviews.each do |review| %>
-            <div class="request-review">
-              <h4>Rating: <%= review.rating %></h3>
-              <p><%= review.content %></p>
-            </div>
-          <% end %>
-        <% end %>
-        <!-- Button trigger modal -->
-        <div class="d-flex">
-          <button type="button" class="btn btn-primary dropbtn" data-toggle="modal" data-target="#requestForm">
-            Make New Request
-          </button>
-          <%= link_to 'Back to Sitters', sitters_path, class: "btn btn-secondary dropbtn" %>
-        </div>
-        <!-- Modal -->
-        <div class="modal fade" id="requestForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="requestForm">Make a New Request</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <%= render "form", sitter: @sitter, request: @request %>
-              </div>
+        <div class="box_b">
+
+          <!-- <div class="sitter_bio">
+            <p>Details: <%= @sitter.details %></p>
+            <p>Location: <%= @sitter.address %></p>
+           </div> -->
+          <div class="reviews">
+            <h2>Reviews for <%= @sitter.first_name %></h2>
+            <% if @reviews.nil? %>
+              <p>There are currently no reviews...</p>
+            <% else %>
+              <% @reviews.each do |review| %>
+
+                  <h4>Rating: <%= review.rating %></h4>
+                  <p><%= review.content %></p>
+
+              <% end %>
+            <% end %>
+          </div>
+
+           <!--  <div class="d-flex">
+            <button type="button" class="btn btn-primary dropbtn" data-toggle="modal" data-target="#requestForm">
+              Make New Request
+            </button>
+            <%= link_to 'Back to Sitters', sitters_path, class: "btn btn-secondary dropbtn" %>
+          </div>  -->
+
+           <!--  <div class="modal fade" id="requestForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="requestForm">Make a New Request</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <%= render "form", sitter: @sitter, request: @request %>
+                  </div>
+              </div> -->
+
             </div>
           </div>
         </div>
+
+         <div class="d-flex bttns">
+            <button type="button" class="btn btn-primary dropbtn" data-toggle="modal" data-target="#requestForm">
+              Make New Request
+            </button>
+            <%= link_to 'Back to Sitters', sitters_path, class: "btn btn-secondary dropbtn" %>
+        </div>
+           <div class="modal fade" id="requestForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="requestForm">Make a New Request</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <%= render "form", sitter: @sitter, request: @request %>
+                  </div>
+              </div>
+
       </div>
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
