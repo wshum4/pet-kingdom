@@ -40,7 +40,7 @@
   margin: 0;
   color: black;
   text-decoration: none;
-  text-align: center;
+  text-align: left;
 }
 .animal_info p{
   font-size: 12px;
@@ -50,10 +50,14 @@
   margin-top: 8px;
   color: black;
   text-decoration: none;
-  text-align: center;
+  text-align: left;
 }
 .animal_info {
   margin-left: 30px;
+}
+
+a:hover {
+  text-decoration: none;
 }
 
 .card_list_sitter .card_sitter_infos .animal_info {
